@@ -81,7 +81,10 @@ namespace CiberIs.Controllers
                 return price;
             }
             var totalQuantity = quantity + iceCream.Quantity;
-            return (int)Math.Ceiling((decimal)(quantity / totalQuantity * price) + iceCream.Quantity / totalQuantity * iceCream.Price);
+            var fraction1 = (decimal) (quantity)*price;
+            var fraction2 = (decimal) (iceCream.Quantity)*iceCream.Price;
+            var fraction3 = (fraction1 + fraction2)/totalQuantity;
+            return (int)Math.Round(fraction3, 0);
         }
     }
 }
