@@ -23,8 +23,9 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="buyIceCream">
-    <h1>Ciber is!</h1>
-    <h2></h2>
+    <header>
+      <h1>Ciber is!</h1>
+    </header>
     <ul class="is-list">
     {{#each item in model}}
       <li>
@@ -37,7 +38,10 @@
   </script>
 
   <script type="text/x-handlebars" data-template-name="fillFreezer">
-    <h1>Fyll Fryseren med is!</h1>
+    <header>
+      <h1>Fyll Fryseren med is!</h1>
+    </header>
+    {{outlet}}
     <ul>
     {{#each item in model}}
       <li>
@@ -47,6 +51,12 @@
       </li>
     {{/each}}
     </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="addBrand">
+    <label>Navn på is<input type="text"></label>
+    <label>Bilde av is<input type="url"></label>
+    <button value="Legg til ny is">
   </script>
 
   <script src="content/js/libs/jquery-1.9.1.js"></script>

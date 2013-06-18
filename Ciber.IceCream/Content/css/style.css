@@ -43,11 +43,8 @@ background-size: 48px;
 	text-shadow: -2px -0px 1px #755C3B;
 }
 
-h1+h2{
-	content:"";
+header{
 	display: block;
-	width: 100%;
-	height: 48px;
 	background: -moz-radial-gradient(circle, #FBCFCF 12px, transparent 12px),
 				-moz-radial-gradient(circle, #FB8383 12px, transparent 12px);
 	background: -webkit-radial-gradient(center, ellipse cover, #FBCFCF 12px, transparent 12px), 
@@ -56,11 +53,10 @@ h1+h2{
 				-o-radial-gradient(circle, #FB8383 12px, transparent 12px);
 	background: radial-gradient(ellipse at center, #FBCFCF 12px, transparent 12px), 
 				radial-gradient(ellipse at center, #FB8383 12px, transparent 12px);
-	background-position: -12px 0, 12px 0;
+	background-position: -12px 100%, 12px 100%;
 	background-size: 48px 48px;
-	margin-top: -24px;
 	background-repeat: repeat-x;
-	padding: 0;
+	padding: 0 0 24px 0;
 }
 h2{
 	color: #755C3B;

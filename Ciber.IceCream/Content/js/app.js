@@ -2,7 +2,9 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource('buyIceCream', { path: '/' });
-  this.resource('fillFreezer');
+  this.resource('fillFreezer', function(){
+  	this.resource('addBrand');
+  });
 });
 
 
