@@ -1,0 +1,165 @@
+/* Put your CSS here */
+
+/*
+COLORS:
+
+HEX     | RGB         | DARKER  | NAME
+--------+------------+---------+------
+#755C3B - 117, 92, 59 - #5C482E - 80% Cocoa
+#FCFBE3 - 252,251,227 - #E3E2CC - Vanilla cream
+#FBCFCF - 251,207,207 - #E0B9B9 - Strawberry creams
+#CDBB99 - 205,187,153 - #B3A386 - dusting of cocoa
+#A37E58 - 163,126, 88 - #8A6A4A - milk chocolate shell
+
+*/
+
+
+html, body {
+    margin: 0;
+	font-family: 'Lily Script One', cursive;
+    background: #FCFBE3;
+    font-size: large;
+}
+
+h1{
+	
+    background: rgb(251,207,207); /* Old browsers */
+    background: -moz-linear-gradient(left,  rgba(251,207,207,1) 0%, rgba(251,207,207,1) 50%, rgba(251,131,131,1) 50%, rgba(251,131,131,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(251,207,207,1)), color-stop(50%,rgba(251,207,207,1)), color-stop(50%,rgba(251,131,131,1)), color-stop(100%,rgba(251,131,131,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(251,207,207,1) 0%,rgba(251,207,207,1) 50%,rgba(251,131,131,1) 50%,rgba(251,131,131,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(251,207,207,1) 0%,rgba(251,207,207,1) 50%,rgba(251,131,131,1) 50%,rgba(251,131,131,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(251,207,207,1) 0%,rgba(251,207,207,1) 50%,rgba(251,131,131,1) 50%,rgba(251,131,131,1) 100%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(251,207,207,1) 0%,rgba(251,207,207,1) 50%,rgba(251,131,131,1) 50%,rgba(251,131,131,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fbcfcf', endColorstr='#fb8383',GradientType=1 ); /* IE6-9 */
+
+    background-size: 48px;
+
+
+
+	/*background: #FBCFCF;*/
+
+	color: #FCFBE3;
+	margin: 0;
+	padding: 0.25em 0.5em;
+	font-family: 'Lily Script One', cursive;
+	text-shadow: -2px -0px 1px #755C3B;
+}
+
+header{
+	display: block;
+	background: -moz-radial-gradient(circle, #FBCFCF 12px, transparent 12px),
+				-moz-radial-gradient(circle, #FB8383 12px, transparent 12px);
+	background: -webkit-radial-gradient(center, ellipse cover, #FBCFCF 12px, transparent 12px), 
+				-webkit-radial-gradient(center, ellipse cover, #FB8383 12px, transparent 12px);
+	background: -o-radial-gradient(circle, #FBCFCF 12px, transparent 12px), 
+				-o-radial-gradient(circle, #FB8383 12px, transparent 12px);
+	background: radial-gradient(ellipse at center, #FBCFCF 12px, transparent 12px), 
+				radial-gradient(ellipse at center, #FB8383 12px, transparent 12px);
+	background-position: -12px 100%, 12px 100%;
+	background-size: 48px 48px;
+	background-repeat: repeat-x;
+	padding: 0 0 24px 0;
+}
+h2{
+	color: #755C3B;
+	margin: 0;
+	padding: 0.5em;
+}
+
+
+ul.is-list{
+	margin:0;
+	padding:0;
+}
+
+ul.is-list li{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ice-cream {
+    position: relative;
+	max-height: 250px;
+    overflow: hidden;
+}
+
+.ice-cream h2{
+	background: rgba(252, 251, 227, 0.8);
+	border-bottom: 3px solid #755C3B;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: #755C3B;
+	margin: 0;
+	padding: 0 0.5em;
+	position: absolute;
+	width: 100%;
+}
+
+.ice-cream img{
+	width: 100%;
+}
+
+.ice-cream .price{
+	display: none;
+}
+
+nav {
+
+	background: #fbcfcf;
+
+	border-top: 3px solid #E0B9B9;
+
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: justify;
+}
+
+nav ul li{
+	display: inline-block;
+}
+
+nav ul li a{
+	font-weight: bold;
+	border: 1px solid rgba(0,0,0,0.1);
+	border-radius: 0.5em;
+	display: inline-block;
+	margin: 0.25em;
+	padding: 0.25em 1em;
+	color: white;
+	text-decoration: none;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+nav ul li a.active{
+	color: white;
+	background: rgba(0,0,0,0.1);
+	border: 1px solid rgba(0,0,0,0.3);
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,0.5) inset;
+	text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
+}
+
+
+.pop-over-cover {
+    background: rgba(0, 0, 0, 0.5);
+
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 10;
+}
+
+.pop-over {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px black;
+    margin: 3em 0.25em;
+    overflow: hidden;
+    max-height: 100%;
+}

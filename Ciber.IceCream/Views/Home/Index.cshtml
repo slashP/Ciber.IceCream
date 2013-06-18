@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<header>
+    <h1>Ciber is!</h1>
+</header>
+<div data-viewmodel="Home/IceCreamListVM">
+    <div class="pop-over-cover" data-bind="if: showPopup, visible:showPopup, click: hideBuyPopup" style="display: none">
+        <a href="#" class="close-pop-over" data-bind="click: hideBuyPopup"></a>
+        <div class="pop-over" data-bind="with: buyIceCream">
+            <div data-bind="with: selectedIceCream" class="ice-cream">
+                <h2 data-bind="text: title"></h2>
+                <img data-bind="attr: { src: imageURL }">
+                <div class="price" data-bind="text: price"></div>
+            </div>
+            <button data-bind="click: buy">Kjøp isen</button>
+        </div>
+    </div>
+    <ul class="is-list" data-bind="foreach: iceCreams">
+        <li data-bind="click: $parent.showBuyPopup" class="ice-cream">
+            <h2 data-bind="text: title"></h2>
+            <img data-bind="attr: { src: imageURL }">
+            <div class="price" data-bind="text: price"></div>
+        </li>
+    </ul>
+</div>
+
+
+<script type="text/x-handlebars">
+    {{outlet}}
+    <nav>
+      <ul>
+        <li>{{#linkTo buyIceCream}}Kjøp is{{/linkTo}}
+        <li>{{#linkTo fillFreezer}}Fyll Fryseren{{/linkTo}}
+      </ul>
+    </nav>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="iceCreams">
+    <header>
+      <h1>Ciber is!</h1>
+    </header>
+    <div class="pop-over">
+      {{outlet}}
+    </div>
+    <ul class="is-list">
+    {{#each item in model}}
+      <li>
+        {{#linkTo buyIceCream.now item}}
+          <h2>{{item.title}}</h2>
+          <img {{bindAttr src="item.image"}}>
+          <div class="price">{{item.price}}</div>
+        {{/linkTo}}
+      </li>
+    {{/each}}
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="iceCreams/buy">
+    <h2>{{title}}</h2>
+    <img {{bindAttr src="image"}}>
+    <div class="price">{{price}}</div>
+    <button {{action buy}}>Kjøp!</button>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="fillFreezer">
+    <header>
+      <h1>Fyll Fryseren med is!</h1>
+    </header>
+    {{outlet}}
+    <ul>
+    {{#each item in model}}
+      <li>
+        <h2>{{item.title}}</h2>
+        <img src="{{item.image}}">
+        <div class="price">{{item.price}}</div>
+      </li>
+    {{/each}}
+    </ul>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="fillFreezer/addBrand">
+    <label>Navn på is<input type="text"></label>
+    <label>Bilde av is<input type="url"></label>
+    <button {{action addBrand}}>Legg til ny is</button>
+  </script>
