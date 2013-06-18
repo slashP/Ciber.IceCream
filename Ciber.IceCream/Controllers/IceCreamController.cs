@@ -26,6 +26,21 @@ namespace CiberIs.Controllers
             }).ToList();
         }
 
+        public IEnumerable<dynamic> GetIceCreams(bool includeAll)
+        {
+            if (!includeAll)
+            {
+                return GetIceCreams();
+            }
+            return _mongoDb.GetCollection<IceCream>("IceCreams").AsQueryable().Select(x => new {
+                x.Title,
+                x.Price,
+                Id = x.Id.ToString(),
+                x.Image,
+                x.Quantity
+            }).ToList();
+        }
+
         public dynamic Post(IceCream iceCream)
         {
             if (iceCream == null) throw new HttpResponseException(HttpStatusCode.BadRequest);
