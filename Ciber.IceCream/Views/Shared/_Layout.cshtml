@@ -32,7 +32,7 @@
     <ul class="is-list">
     {{#each item in model}}
       <li>
-        {{#linkTo buyIceCream.buyNow item}}
+        {{#linkTo buyIceCream.now item}}
           <h2>{{item.title}}</h2>
           <img {{bindAttr src="item.image"}}>
           <div class="price">{{item.price}}</div>
@@ -42,10 +42,10 @@
     </ul>
   </script>
 
-  <script type="text/x-handlebars" data-template-name="buyNow">
-    <h2>{{item.title}}</h2>
-    <img {{bindAttr src="item.image"}}>
-    <div class="price">{{item.price}}</div>
+  <script type="text/x-handlebars" data-template-name="buyIceCream/now">
+    <h2>{{title}}</h2>
+    <img {{bindAttr src="image"}}>
+    <div class="price">{{price}}</div>
     <button {{action buy}}>Kjøp!</button>
   </script>
 
@@ -65,7 +65,7 @@
     </ul>
   </script>
 
-  <script type="text/x-handlebars" data-template-name="addBrand">
+  <script type="text/x-handlebars" data-template-name="fillFreezer/addBrand">
     <label>Navn på is<input type="text"></label>
     <label>Bilde av is<input type="url"></label>
     <button {{action addBrand}}>Legg til ny is</button>

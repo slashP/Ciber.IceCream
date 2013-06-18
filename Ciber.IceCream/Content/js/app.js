@@ -2,15 +2,15 @@ App = Ember.Application.create();
 
 App.Router.map(function() {
   this.resource('buyIceCream', { path: '/' }, function(){
-  	this.resource('buyNow', {path: '/buyNow/:id' });
+  	this.resource('now', {path: '/buyNow/:id' });
   });
   this.resource('fillFreezer', function(){
-  	this.resource('addBrand');
+  	this.route('addBrand');
   });
 });
 
 
-App.BuyNowController = Ember.ObjectController.extend({
+App.BuyIceCreamNowController = Ember.ObjectController.extend({
 
 	buy: function(){
 		//post to server
@@ -19,7 +19,7 @@ App.BuyNowController = Ember.ObjectController.extend({
 });
 
 
-App.AddBrandController = Ember.ObjectController.extend({
+App.FillFreezerAddBrandController = Ember.ObjectController.extend({
 
 	addBrand: function(){
 		//post to server
