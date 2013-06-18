@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net;
 using System.Web.Http;
 using CiberIs.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using System.Linq;
 
 namespace CiberIs.Controllers
 {
@@ -15,36 +16,58 @@ namespace CiberIs.Controllers
 
         public IEnumerable<dynamic> GetIceCreams()
         {
-            return _mongoDb.GetCollection<Purchase>("Purchases").FindAll().Select(x => new {
-                x.Name, x.Price, x.Time, Id = x.Id.ToString()
+            return _mongoDb.GetCollection<IceCream>("IceCreams").AsQueryable().Where(x => x.Quantity > 0).Select(x => new
+            {
+                x.Title,
+                x.Price,
+                Id = x.Id.ToString(),
+                x.Image,
+                x.Quantity
             }).ToList();
         }
 
-        public dynamic GetIceCream(string id)
+        public dynamic Post(IceCream iceCream)
         {
-            var purchase = _mongoDb.GetCollection<Purchase>("Purchases").FindOneById(new ObjectId(id));
-            return new {purchase.Name, purchase.Time, purchase.Price};
+            if (iceCream == null) throw new HttpResponseException(HttpStatusCode.BadRequest);
+            try
+            {
+                _mongoDb.GetCollection<IceCream>("IceCreams").Insert(iceCream);
+            }
+            catch (MongoException e)
+            {
+                return new {success = false, errorMessage = e.Message};
+            }
+            return new { success = true, errorMessage = string.Empty, iceCreamId = iceCream.Id.ToString() };
         }
 
-        public IEnumerable<dynamic> GetIceCreams(DateTime from, DateTime to)
+        // Fill freezer
+        public dynamic Put(int quantity, string iceCreamId, int price)
         {
-            return _mongoDb.GetCollection<Purchase>("Purchases").AsQueryable().Where(x => x.Time > from && x.Time < to).Select(x => new {
-                x.Name, x.Price, x.Time, Id = x.Id.ToString()
-                }).ToList();
+            if (quantity == 0 || iceCreamId == null) throw new HttpResponseException(HttpStatusCode.BadRequest);
+            var iceCream = _mongoDb.GetCollection<IceCream>("IceCreams").FindOneById(new ObjectId(iceCreamId));
+            if (iceCream == null) return new { success = false, errorMessage = "No ice cream with that id" };
+            try
+            {
+                var newPrice = GetPriceBasedOnQuantity(iceCream, price, quantity);
+                iceCream.Quantity += quantity;
+                iceCream.Price = newPrice;
+                _mongoDb.GetCollection<IceCream>("IceCreams").Save(iceCream);
+            }
+            catch (MongoException e)
+            {
+                return new { success = false, errorMessage = e.Message };
+            }
+            return new { success = true, errorMessage = string.Empty};
         }
 
-        public IEnumerable<dynamic> GetIceCreams(DateTime from, DateTime to, string name)
+        private static int GetPriceBasedOnQuantity(IceCream iceCream, int price, int quantity)
         {
-            return _mongoDb.GetCollection<Purchase>("Purchases").AsQueryable().Where(x => x.Name.ToLower() == name.ToLower() && x.Time > from && x.Time < to).Select(x => new {
-                x.Name, x.Price, x.Time, Id = x.Id.ToString()
-                }).ToList();
-        }
-
-        public dynamic PostIceCream(Purchase purchase)
-        {
-            purchase.Time = DateTime.UtcNow;
-            _mongoDb.GetCollection<Purchase>("Purchases").Insert(purchase);
-            return new{purchase.Time, Id = purchase.Id.ToString(), purchase.Price, purchase.Name};
+            if (iceCream.Quantity == 0 || iceCream.Price == 0)
+            {
+                return price;
+            }
+            var totalQuantity = quantity + iceCream.Quantity;
+            return (int)Math.Ceiling((decimal)(quantity / totalQuantity * price) + iceCream.Quantity / totalQuantity * iceCream.Price);
         }
     }
 }

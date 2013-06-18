@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Runtime.Serialization;
 using MongoDB.Bson;
 
 namespace CiberIs.Models
@@ -13,11 +10,7 @@ namespace CiberIs.Models
         public BsonObjectId Id { get; set; }
         public int Price { get; set; }
         public DateTime? Time { get; set; }
-        public string Name { get; set; }
-    }
-
-    public class IceModel
-    {
-        public IList<Purchase> Purchases { get; set; }
+        public int Buyer { get; set; }
+        public bool IsPaidFor { get; set; }
     }
 }
