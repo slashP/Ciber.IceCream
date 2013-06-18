@@ -12,64 +12,7 @@
 </head>
 <body>
 
-  <script type="text/x-handlebars">
-    {{outlet}}
-    <nav>
-      <ul>
-        <li>{{#linkTo buyIceCream}}Kjøp is{{/linkTo}}
-        <li>{{#linkTo fillFreezer}}Fyll Fryseren{{/linkTo}}
-      </ul>
-    </nav>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="buyIceCream">
-    <header>
-      <h1>Ciber is!</h1>
-    </header>
-    <div class="pop-over">
-      {{outlet}}
-    </div>
-    <ul class="is-list">
-    {{#each item in model}}
-      <li>
-        {{#linkTo buyIceCream.now item}}
-          <h2>{{item.title}}</h2>
-          <img {{bindAttr src="item.image"}}>
-          <div class="price">{{item.price}}</div>
-        {{/linkTo}}
-      </li>
-    {{/each}}
-    </ul>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="buyIceCream/now">
-    <h2>{{title}}</h2>
-    <img {{bindAttr src="image"}}>
-    <div class="price">{{price}}</div>
-    <button {{action buy}}>Kjøp!</button>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="fillFreezer">
-    <header>
-      <h1>Fyll Fryseren med is!</h1>
-    </header>
-    {{outlet}}
-    <ul>
-    {{#each item in model}}
-      <li>
-        <h2>{{item.title}}</h2>
-        <img src="{{item.image}}">
-        <div class="price">{{item.price}}</div>
-      </li>
-    {{/each}}
-    </ul>
-  </script>
-
-  <script type="text/x-handlebars" data-template-name="fillFreezer/addBrand">
-    <label>Navn på is<input type="text"></label>
-    <label>Bilde av is<input type="url"></label>
-    <button {{action addBrand}}>Legg til ny is</button>
-  </script>
+  @RenderBody()
 
   <script src="content/js/libs/jquery-1.9.1.js"></script>
   <script src="content/js/libs/handlebars-1.0.0-rc.4.js"></script>
