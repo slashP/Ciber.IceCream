@@ -1,12 +1,31 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  this.resource('buyIceCream', { path: '/' });
+  this.resource('buyIceCream', { path: '/' }, function(){
+  	this.resource('buyNow', {path: '/buyNow/:id' });
+  });
   this.resource('fillFreezer', function(){
   	this.resource('addBrand');
   });
 });
 
+
+App.BuyNowController = Ember.ObjectController.extend({
+
+	buy: function(){
+		//post to server
+		//go back to front page
+	}
+});
+
+
+App.AddBrandController = Ember.ObjectController.extend({
+
+	addBrand: function(){
+		//post to server
+		//hide the addBrand view
+	}
+});
 
 App.BuyIceCreamRoute = Ember.Route.extend({
   model: function() {
