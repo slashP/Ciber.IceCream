@@ -28,17 +28,16 @@ namespace CiberIs.Controllers
 
         public IEnumerable<dynamic> GetIceCreams(bool includeAll)
         {
-            if (!includeAll)
-            {
-                return GetIceCreams();
-            }
-            return _mongoDb.GetCollection<IceCream>("IceCreams").AsQueryable().Select(x => new {
-                x.Title,
-                x.Price,
-                Id = x.Id.ToString(),
-                x.Image,
-                x.Quantity
-            }).ToList();
+            return includeAll
+                       ? _mongoDb.GetCollection<IceCream>("IceCreams").AsQueryable().Select(x => new
+                           {
+                               x.Title,
+                               x.Price,
+                               Id = x.Id.ToString(),
+                               x.Image,
+                               x.Quantity
+                           }).ToList()
+                       : GetIceCreams();
         }
 
         public dynamic Post(IceCream iceCream)
