@@ -1,7 +1,7 @@
 ﻿define(["knockout"], function(ko) {
     function IceCream(raw) {
         this.title = raw.Title || "";
-        this.imageURL = raw.ImageURL || "";
+        this.imageURL = raw.Image || "";
         this.price = raw.Price || 0;
     }
 

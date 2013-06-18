@@ -22,7 +22,7 @@
                 self.showPopup(false);
             });
 
-            ajax("api/IceCream", {}, "GET", function (xhr) {
+            ajax("api/IceCream", {includeAll: true}, "GET", function (xhr) {
                 var iceCreams = JSON.parse(xhr.responseText).map(function (raw) { return new IceCream(raw); });
                 self.iceCreams(iceCreams);
             });

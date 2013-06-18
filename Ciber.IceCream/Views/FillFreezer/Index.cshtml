@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div data-viewmodel="FillFreezer/NewBrandVM">
+    <label>Navn: <input type="text" data-bind="value: title"/></label>
+    <label>Bilde: <input type="text" data-bind="value: image"/></label>
+    <label>Pris: <input type="text" data-bind="value: price"/></label>
+    <button data-bind="click: addNewBrand">Legg til ny type is</button>
+</div>
