@@ -172,7 +172,9 @@
     <Content Include="Content\images\is_2.jpg" />
     <Content Include="Content\images\is_3.jpg" />
     <Content Include="Content\js\app.js" />
+    <Content Include="Content\js\Domain\currentUser.js" />
     <Content Include="Content\js\Domain\IceCream.js" />
+    <Content Include="Content\js\Home\BuyIceCreamVM.js" />
     <Content Include="Content\js\libs\es5-shim.min.js" />
     <Content Include="Content\js\libs\jquery-1.9.1.js" />
     <Content Include="Content\js\libs\knockout-2.1.0.js" />

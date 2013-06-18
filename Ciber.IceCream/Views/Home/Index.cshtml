@@ -5,12 +5,20 @@
 <header>
     <h1>Ciber is!</h1>
 </header>
-<div class="pop-over">
-    
-</div>
 <div data-viewmodel="Home/IceCreamListVM">
+    <div class="pop-over-cover" data-bind="if: showPopup">
+        <a href="#" class="close-pop-over" data-bind="click: hideBuyPopup"></a>
+        <div class="pop-over" data-bind="with: buyIceCream">
+            <div data-bind="with: selectedIceCream">
+                <h2 data-bind="text: title"></h2>
+                <img data-bind="attr: { src: imageURL }">
+                <div class="price" data-bind="text: price"></div>
+            </div>
+            <button data-bind="click: buy">Kjøp isen</button>
+        </div>
+    </div>
     <ul class="is-list" data-bind="foreach: iceCreams">
-        <li>
+        <li data-bind="click: $parent.showBuyPopup">
             <h2 data-bind="text: title"></h2>
             <img data-bind="attr: { src: imageURL }">
             <div class="price" data-bind="text: price"></div>
