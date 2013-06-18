@@ -11,13 +11,16 @@
             self.buyIceCream.selectedIceCream(iceCream);
             self.showPopup(true);
         };
-        this.hideBuyPopup = function() {
-            self.showPopup(false);
+        this.hideBuyPopup = function (iceCream, event) {
+            if(event.currentTarget == event.originalTarget)
+                self.showPopup(false);
         };
         
         init: {
 
-            this.buyIceCream = new BuyIceCreamVM(self.hideBuyPopup);
+            this.buyIceCream = new BuyIceCreamVM(function() {
+                self.showPopup(false);
+            });
 
             ajax("api/IceCream", {}, "GET", function (xhr) {
                 var iceCreams = JSON.parse(xhr.responseText).map(function (raw) { return new IceCream(raw); });

@@ -37,12 +37,12 @@ define([], function(){
 		}
 
 		xhr.open(isPost ? "POST" : "GET", url, true);
+		xhr.setRequestHeader("Accept", "application/json");
 		
 		if(isPost && data){
 			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhr.setRequestHeader("Content-length", data.length);
 			xhr.setRequestHeader("Connection", "close");
-			xhr.setRequestHeader("Accept", "application/json");
 		}
 		
 		xhr.onreadystatechange = function(){
