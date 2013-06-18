@@ -2,6 +2,23 @@
     ViewBag.Title = "Index";
 }
 
+<header>
+    <h1>Ciber is!</h1>
+</header>
+<div class="pop-over">
+    
+</div>
+<div data-viewmodel="Home/IceCreamListVM">
+    <ul class="is-list" data-bind="foreach: iceCreams">
+        <li>
+            <h2 data-bind="text: title"></h2>
+            <img data-bind="attr: { src: imageURL }">
+            <div class="price" data-bind="text: price"></div>
+        </li>
+    </ul>
+</div>
+
+
 <script type="text/x-handlebars">
     {{outlet}}
     <nav>

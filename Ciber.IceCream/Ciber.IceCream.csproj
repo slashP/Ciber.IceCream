@@ -166,8 +166,35 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\normalize.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\images\is_1.jpg" />
+    <Content Include="Content\images\is_2.jpg" />
+    <Content Include="Content\images\is_3.jpg" />
+    <Content Include="Content\js\app.js" />
+    <Content Include="Content\js\Domain\IceCream.js" />
+    <Content Include="Content\js\libs\es5-shim.min.js" />
+    <Content Include="Content\js\libs\jquery-1.9.1.js" />
+    <Content Include="Content\js\libs\knockout-2.1.0.js" />
+    <Content Include="Content\js\libs\require-2.1.1.js" />
+    <Content Include="Content\js\main.js" />
+    <Content Include="Content\js\ordnung\ajax.js" />
+    <Content Include="Content\js\ordnung\Constraint.js" />
+    <Content Include="Content\js\ordnung\ConstraintResolver.js" />
+    <Content Include="Content\js\ordnung\constraints\NotEmpty.js" />
+    <Content Include="Content\js\ordnung\constraints\Pattern.js" />
+    <Content Include="Content\js\ordnung\Executable.js" />
+    <Content Include="Content\js\ordnung\ExecutableResult.js" />
+    <Content Include="Content\js\ordnung\koExtensions.js" />
+    <Content Include="Content\js\ordnung\loader.js" />
+    <Content Include="Content\js\ordnung\proclaimWhen.js" />
+    <Content Include="Content\js\ordnung\qvc.js" />
+    <Content Include="Content\js\ordnung\utils.js" />
+    <Content Include="Content\js\ordnung\Validatable.js" />
+    <Content Include="Content\js\ordnung\Validator.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\js\Home\IceCreamListVM.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -188,6 +215,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

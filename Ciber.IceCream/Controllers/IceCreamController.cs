@@ -14,12 +14,12 @@ namespace CiberIs.Controllers
     {
         private readonly MongoDatabase _mongoDb = MongoHqConfig.RetrieveMongoHqDb();
 
-        public IEnumerable<dynamic> GetIceCreams()
+        /*public IEnumerable<dynamic> GetPurchasedIceCreams()
         {
             return _mongoDb.GetCollection<Purchase>("Purchases").FindAll().Select(x => new {
                 x.Name, x.Price, x.Time, Id = x.Id.ToString()
             }).ToList();
-        }
+        }*/
 
         public dynamic GetIceCream(string id)
         {
@@ -36,9 +36,33 @@ namespace CiberIs.Controllers
 
         public IEnumerable<dynamic> GetIceCreams(DateTime from, DateTime to, string name)
         {
-            return _mongoDb.GetCollection<Purchase>("Purchases").AsQueryable().Where(x => x.Name.ToLower() == name.ToLower() && x.Time > from && x.Time < to).Select(x => new {
-                x.Name, x.Price, x.Time, Id = x.Id.ToString()
-                }).ToList();
+            return _mongoDb.GetCollection<Purchase>("Purchases").AsQueryable().Where(x => x.Name.ToLower() == name.ToLower() && x.Time > from && x.Time < to).Select(x => new
+            {
+                x.Name,
+                x.Price,
+                x.Time,
+                Id = x.Id.ToString()
+            }).ToList();
+        }
+
+        [HttpGet]
+        public IEnumerable<dynamic> GetIceCreams()
+        {
+            return new[]
+                {
+                    new
+                        {
+                            Title = "Krone-is",
+                            Price = 8,
+                            ImageURL = "/content/images/is_1.jpg"
+                        },
+                    new
+                        {
+                            Title = "Snickers is",
+                            Price = 9,
+                            ImageURL = "/content/images/is_2.jpg"
+                        }
+                };
         }
 
         public dynamic PostIceCream(Purchase purchase)
