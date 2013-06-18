@@ -3,11 +3,13 @@
 /*
 COLORS:
 
-#755C3B - #5C482E - 80% Cocoa
-#FCFBE3 - #E3E2CC - Vanilla cream
-#FBCFCF - #E0B9B9 - Strawberry creams
-#CDBB99 - #B3A386 - dusting of cocoa
-#A37E58 - #8A6A4A - milk chocolate shell
+HEX     | RGB         | DARKER  | NAME
+--------+------------+---------+------
+#755C3B - 117, 92, 59 - #5C482E - 80% Cocoa
+#FCFBE3 - 252,251,227 - #E3E2CC - Vanilla cream
+#FBCFCF - 251,207,207 - #E0B9B9 - Strawberry creams
+#CDBB99 - 205,187,153 - #B3A386 - dusting of cocoa
+#A37E58 - 163,126, 88 - #8A6A4A - milk chocolate shell
 
 */
 
@@ -144,6 +146,7 @@ nav ul li a.active{
 
 .pop-over-cover {
     background: rgba(0, 0, 0, 0.5);
+
     top: 0;
     left: 0;
     right: 0;
