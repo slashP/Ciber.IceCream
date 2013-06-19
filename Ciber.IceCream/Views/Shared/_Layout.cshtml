@@ -10,18 +10,32 @@
     name="viewport" 
     content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
-<body>
+    <body>
+        <div data-viewmodel="Common/PopupVM">
+            <div data-bind="if: isPopupVisible, visible: isPopupVisible" style="display: none">
+                <div class="pop-over-cover" data-bind="click: hidePopup"></div>
+                <a href="#" class="close-pop-over" data-bind="click: hidePopup"></a>
+                <div class="pop-over" data-bind="template: { name: template, data: viewmodel }"></div>
+            </div>
+        </div>
 
-    @RenderBody()
-    <nav>
-        <ul>
-            <li>@Html.ActionLink("Kjøp is!", "Index", "Home")
-            <li>@Html.ActionLink("Fyll Frysern!", "Index", "FillFreezer")
-        </ul>
-    </nav>
+        @RenderBody()
+        <nav>
+            <ul>
+                <li>@Html.ActionLink("Kjøp is!", "Index", "Home")
+                <li>@Html.ActionLink("Fyll Frysern!", "Index", "FillFreezer")
+            </ul>
+        </nav>
+        
+        
+        <script type="text/template" id="AuthenticationPopup">
+            <label>Ansattnummer:<input type="text" data-bind="value: buyerId"/></label>
+            <button data-bind="click: authenticate">OK</button>
+        </script>
+        
     @RenderSection("scripts", false)
 
   <script src="/content/js/libs/require-2.1.1.js" data-main="/content/js/main.js"></script>
 
-</body>
+    </body>
 </html>
