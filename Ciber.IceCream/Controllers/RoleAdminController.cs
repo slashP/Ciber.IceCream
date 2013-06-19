@@ -4,7 +4,7 @@ using System.Web.Security;
 
 namespace CiberIs.Controllers
 {
-    [Authorize()]
+    [Authorize(Roles = "admin")]
     public class RoleAdminController : Controller
     {
         //
