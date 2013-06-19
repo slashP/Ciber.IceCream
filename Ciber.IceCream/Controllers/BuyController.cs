@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using CiberIs.Models;
 using MongoDB.Bson;
@@ -11,15 +12,15 @@ namespace CiberIs.Controllers
     {
         private readonly MongoDatabase _mongoDb = MongoHqConfig.RetrieveMongoHqDb();
 
-        public dynamic Post(string iceCreamId, int buyer)
+        public dynamic Post(FormDataCollection data)
         {
-            var ice = _mongoDb.GetCollection<IceCream>("IceCreams").FindOneById(new ObjectId(iceCreamId));
+            var ice = _mongoDb.GetCollection<IceCream>("IceCreams").FindOneById(new ObjectId(data.Get("iceCreamId")));
             if (ice == null) throw new HttpResponseException(HttpStatusCode.ExpectationFailed);
             try
             {
                 ice.Quantity--;
                 _mongoDb.GetCollection<IceCream>("IceCreams").Save(ice);
-                _mongoDb.GetCollection<Purchase>("Purchases").Insert(new Purchase() { Price = ice.Price, Buyer = buyer, Time = DateTime.UtcNow });
+                _mongoDb.GetCollection<Purchase>("Purchases").Insert(new Purchase() { Price = ice.Price, Buyer = int.Parse(data.Get("buyer")), Time = DateTime.UtcNow });
             }
             catch (MongoException e)
             {
