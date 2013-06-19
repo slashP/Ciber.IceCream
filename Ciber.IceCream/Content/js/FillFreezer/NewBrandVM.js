@@ -9,7 +9,7 @@
         this.price = ko.observable(0);
 
         this.addNewBrand = function() {
-            ajax("api/icecream", {
+            ajax("/api/icecream", {
                 title: self.title(),
                 image: self.image(),
                 price: self.price()

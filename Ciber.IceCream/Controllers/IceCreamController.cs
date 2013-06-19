@@ -40,6 +40,7 @@ namespace CiberIs.Controllers
                        : GetIceCreams();
         }
 
+        [Authorize(Roles = "admin")]
         public dynamic Post(IceCream iceCream)
         {
             if (iceCream == null) throw new HttpResponseException(HttpStatusCode.BadRequest);
@@ -55,6 +56,7 @@ namespace CiberIs.Controllers
         }
 
         // Fill freezer
+        [Authorize(Roles = "admin")]
         public dynamic Put(int quantity, string iceCreamId, int price)
         {
             if (quantity == 0 || iceCreamId == null) throw new HttpResponseException(HttpStatusCode.BadRequest);

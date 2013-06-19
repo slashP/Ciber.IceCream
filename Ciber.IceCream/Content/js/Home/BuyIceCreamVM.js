@@ -6,7 +6,7 @@
         this.selectedIceCream = ko.observable();
         this.buy = function () {
             var id = self.selectedIceCream().id;
-            ajax("api/buy", { iceCreamId: id, buyer: currentUser.id}, "POST", function(xhr) {
+            ajax("/api/buy", { iceCreamId: id, buyer: currentUser.id}, "POST", function(xhr) {
                 onBought(id);
             });
         };

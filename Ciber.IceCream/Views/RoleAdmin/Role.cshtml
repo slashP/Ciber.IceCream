@@ -1,0 +1,14 @@
+﻿@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Add Role</h2>
+<div data-viewmodel="RoleAdmin/AddRoleVM">
+
+    <input data-bind="value: roleName" />
+    <br />
+    <input type="button" data-bind="click: addRole" value="Add user as admin"></input>
+    <br />
+    <span data-bind="text: result"></span>
+</div>

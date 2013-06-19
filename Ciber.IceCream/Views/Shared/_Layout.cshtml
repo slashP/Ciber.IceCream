@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <title>Ciber Is</title>
   <link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="content/css/normalize.css">
-  <link rel="stylesheet" href="content/css/style.css">
+  <link rel="stylesheet" href="/content/css/normalize.css">
+  <link rel="stylesheet" href="/content/css/style.css">
   <meta 
     name="viewport" 
     content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -15,12 +15,13 @@
     @RenderBody()
     <nav>
         <ul>
-        <li>@Html.ActionLink("Kjøp is!", "Index", "Home")
-        <li>@Html.ActionLink("Fyll Frysern!", "Index", "FillFreezer")
+            <li>@Html.ActionLink("Kjøp is!", "Index", "Home")
+            <li>@Html.ActionLink("Fyll Frysern!", "Index", "FillFreezer")
         </ul>
     </nav>
+    @RenderSection("scripts", false)
 
-  <script src="content/js/libs/require-2.1.1.js" data-main="content/js/main.js"></script>
+  <script src="/content/js/libs/require-2.1.1.js" data-main="/content/js/main.js"></script>
 
 </body>
 </html>
