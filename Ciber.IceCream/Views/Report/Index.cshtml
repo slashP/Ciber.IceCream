@@ -1,0 +1,25 @@
+﻿@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header><h1>Reports</h1></header>
+
+<div data-viewmodel="Report/ReportVM">
+    <span>Last non-paid purchase:&nbsp;</span><span data-bind="text: lastNonPaid"></span>
+    <br />
+    From: 
+    <br />
+    <input type="date" data-bind="value: dateFrom" />
+    <br />
+    To: 
+    <br />
+    <input type="date" data-bind="value: dateTo" />
+    <hr />
+    <input type="button" data-bind="click: seeReport" value="See report"/>
+    <br />
+    <br />
+    <input type="button" data-bind="click: effectuateReport" value="Effectuate report"/>
+    
+</div>
