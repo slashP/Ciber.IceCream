@@ -15,7 +15,7 @@
             var iceCreamId = self.selectedIceCream().id;
             currentUser.authenticate(function (success, currentUserId) {
                 if (success) {
-                    ajax("api/buy", { iceCreamId: iceCreamId, buyer: currentUserId }, "POST", function (xhr) {
+                    ajax("/api/buy", { iceCreamId: iceCreamId, buyer: currentUserId }, "POST", function (xhr) {
                         console.log("buy response:", xhr);
                         if (xhr.status == 200) {
                             onBought(iceCreamId);

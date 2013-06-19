@@ -208,11 +208,11 @@
     <Content Include="Content\images\is_2.jpg" />
     <Content Include="Content\images\is_3.jpg" />
     <Content Include="Content\js\app.js" />
+    <Content Include="Content\js\Common\AuthenticateVM.js" />
+    <Content Include="Content\js\Common\PopupVM.js" />
     <Content Include="Content\js\customBindings.js" />
-    <Content Include="Content\js\Domain\currentUser.js" />
     <Content Include="Content\js\Domain\IceCream.js" />
     <Content Include="Content\js\FillFreezer\NewBrandVM.js" />
-    <Content Include="Content\js\Home\AuthenticateVM.js" />
     <Content Include="Content\js\Home\BuyIceCreamVM.js" />
     <Content Include="Content\js\libs\es5-shim.min.js" />
     <Content Include="Content\js\libs\jquery-1.9.1.js" />
@@ -235,6 +235,8 @@
     <Content Include="Content\js\ordnung\Validator.js" />
     <Content Include="Content\js\RoleAdmin\AddRoleVM.js" />
     <Content Include="Content\js\RoleAdmin\RoleAdminVM.js" />
+    <Content Include="Content\js\Service\currentUser.js" />
+    <Content Include="Content\js\Service\popupService.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\Home\IceCreamListVM.js" />
