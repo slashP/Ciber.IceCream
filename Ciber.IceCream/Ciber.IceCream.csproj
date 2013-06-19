@@ -191,7 +191,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IceCreamController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
-    <Compile Include="DbInitializer.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
