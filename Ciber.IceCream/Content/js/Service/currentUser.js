@@ -1,22 +1,23 @@
 ﻿define(["Service/popupService", "Common/AuthenticateVM"], function(popupService, AuthenticateVM) {
 
-    var loggedIn = false;
-    var userId = null;
+    var _loggedIn = false;
+    var _userId = null;
 
+
+    var _authenticateVM = new AuthenticateVM();
+    var _popup = popupService.createPopup("AuthenticationPopup", _authenticateVM);
+    
     function authenticate(whenDone) {
-        if (loggedIn) {
-            whenDone(true, userId);
+        if (_loggedIn) {
+            whenDone(true, _userId);
         } else {
-            var authenticateVM = new AuthenticateVM();
-            var popup = popupService.createPopup("AuthenticationPopup", authenticateVM, function (success) {
-                if (success) {
-                    userId = authenticateVM.buyerId();
-                    loggedIn = true;
-                    whenDone(true, userId);
-                } else {
-                    whenDone(false);
-                }
-            }).open();
+            var popup = _popup.open();
+            _authenticateVM.onAuthenticated(function (userId) {
+                _userId = userId;
+                _loggedIn = true;
+                whenDone(true, userId);
+                popup.close();
+            });
         }
     }
 
