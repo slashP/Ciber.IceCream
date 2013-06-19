@@ -12,8 +12,7 @@
             self.showPopup(true);
         };
         this.hideBuyPopup = function (iceCream, event) {
-            if(event.currentTarget == event.originalTarget)
-                self.showPopup(false);
+            self.showPopup(false);
         };
         
         init: {

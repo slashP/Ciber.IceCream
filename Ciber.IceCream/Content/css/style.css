@@ -84,7 +84,7 @@ ul.is-list li{
     overflow: hidden;
 }
 
-.ice-cream h2{
+.ice-cream-info{
 	background: rgba(252, 251, 227, 0.8);
 	border-bottom: 3px solid #755C3B;
 	left: 0;
@@ -92,9 +92,15 @@ ul.is-list li{
 	bottom: 0;
 	color: #755C3B;
 	margin: 0;
-	padding: 0 0.5em;
+	padding: 0;
 	position: absolute;
 	width: 100%;
+}
+.ice-cream-info h2 {
+    padding: 0 0.5em;
+    line-height: 0;
+    text-shadow: 0 0 3px black;
+    color: #FCFBE3;
 }
 
 .ice-cream img{
@@ -102,7 +108,9 @@ ul.is-list li{
 }
 
 .ice-cream .price{
-	display: none;
+    float: right;
+    font-size: small;
+    margin-right: 0.5em;
 }
 
 nav {
@@ -162,4 +170,6 @@ nav ul li a.active{
     margin: 3em 0.25em;
     overflow: hidden;
     max-height: 100%;
+    position: relative;
+    z-index: 11;
 }

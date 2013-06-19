@@ -8,6 +8,6 @@ require.config({
     }
 });
 
-require(["ordnung/loader"], function(load) {
+require(["ordnung/loader", "customBindings"], function(load, customBindings) {
     load();
 });
