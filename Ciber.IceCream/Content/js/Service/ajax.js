@@ -6,9 +6,13 @@
 
         ajax(url, data, method, function(xhr) {
             if (xhr.status == 200) {
-                deferred.resolve(xhr.responseText);
+                try {
+                    deferred.resolve(JSON.parse(xhr.responseText));
+                } catch(e) {
+                    deferred.reject(e);
+                }
             } else {
-                xhr.reject(xhr);
+                deferred.reject(xhr);
             }
         });
 
