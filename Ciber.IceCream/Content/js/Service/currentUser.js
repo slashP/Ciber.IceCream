@@ -1,4 +1,4 @@
-﻿define(["Service/popupService", "Common/AuthenticateVM"], function(popupService, AuthenticateVM) {
+﻿define(["Service/popupService", "Common/AuthenticateVM", "when"], function(popupService, AuthenticateVM, when) {
 
     var _loggedIn = false;
     var _userId = null;
@@ -7,16 +7,18 @@
     var _authenticateVM = new AuthenticateVM();
     var _popup = popupService.createPopup("AuthenticationPopup", _authenticateVM);
     
-    function authenticate(whenDone) {
+    function authenticate() {
         if (_loggedIn) {
-            whenDone(true, _userId);
+            return when.defer().resolve(_userId);
         } else {
             var popup = _popup.open();
-            _authenticateVM.onAuthenticated(function (userId) {
+            var deferred = when.defer();
+            _authenticateVM.onAuthenticated(deferred.resolver);
+            return deferred.promise.then(function(userId) {
                 _userId = userId;
                 _loggedIn = true;
-                whenDone(true, userId);
                 popup.close();
+                return _userId;
             });
         }
     }

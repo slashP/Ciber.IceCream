@@ -240,6 +240,7 @@
     <Content Include="Content\js\Report\ReportVM.js" />
     <Content Include="Content\js\RoleAdmin\AddRoleVM.js" />
     <Content Include="Content\js\RoleAdmin\RoleAdminVM.js" />
+    <Content Include="Content\js\Service\ajax.js" />
     <Content Include="Content\js\Service\currentUser.js" />
     <Content Include="Content\js\Service\popupService.js" />
     <Content Include="favicon.ico" />

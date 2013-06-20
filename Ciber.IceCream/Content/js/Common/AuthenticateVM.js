@@ -1,20 +1,24 @@
-﻿define(["knockout", "ordnung/ajax"], function (ko, ajax) {
+﻿define(["knockout", "ordnung/ajax", "when"], function (ko, ajax, when) {
 
     function AuthenticateVM() {
 
         var self = this;
-        var _onAuthenticated = null;
+        var _onAuthenticatedResolver = null;
         
 
         this.buyerId = ko.observable();
 
-        this.onAuthenticated = function(callback) {
-            _onAuthenticated = callback;
+        this.onAuthenticated = function(resolver) {
+            _onAuthenticatedResolver = resolver;
         };
 
         this.authenticate = function () {
             console.log("authenticate");
-            _onAuthenticated(self.buyerId());
+            if (true) {
+                _onAuthenticatedResolver.resolve(self.buyerId());
+            } else {
+                _onAuthenticatedResolver.reject();
+            }
         };
     }
 

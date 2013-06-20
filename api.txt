@@ -1,0 +1,45 @@
+CiberIsAPI:
+
+
+listIceCreams:
+--------------
+Get a list of ice creams available
+
+
+params: <none>
+result: [
+	{
+		id: <string>,
+		title: <string>,
+		price: <number>,
+		quantityRemaining: <number>,
+		imageURL: <string>
+	}
+]
+
+
+
+buyIceCream:
+------------
+Buy a single ice cream
+
+params: buyer:<number, ansattnummer>, iceCream: <string, iceCreamID>
+result: {success: <boolean>, errorMessage: <string>}
+
+
+
+fillFreezer:
+------------
+Add more ice cream to the freezer
+
+params: icecream: <string, iceCreamID>, quantity: <number>, price: <number>
+result: {success: <boolean>, errorMessage: <string>}
+
+
+addIceCreamBrand:
+-----------------
+Used to add a new brand of icecream
+
+params: title: <string>, image: <string, url to image>
+result: {success: <boolean>, errorMessage: <string>, iceCreamID: <string>
+

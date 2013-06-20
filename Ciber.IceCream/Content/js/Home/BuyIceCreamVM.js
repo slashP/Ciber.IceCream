@@ -1,4 +1,4 @@
-﻿define(["Service/currentUser", "knockout", "ordnung/ajax"], function(currentUser, ko, ajax) {
+﻿define(["Service/currentUser", "knockout", "Service/ajax"], function(currentUser, ko, ajax) {
 
     function BuyIceCreamVM(selectedIceCream) {
         var self = this;
@@ -13,15 +13,12 @@
         
         this.buy = function () {
             var iceCreamId = self.selectedIceCream().id;
-            currentUser.authenticate(function (success, currentUserId) {
-                if (success) {
-                    ajax("/api/buy", { iceCreamId: iceCreamId, buyer: currentUserId }, "POST", function (xhr) {
-                        console.log("buy response:", xhr);
-                        if (xhr.status == 200) {
-                            onBought(iceCreamId);
-                        }
-                    });
-                }
+
+            currentUser.authenticate(
+            ).then(function (currentUserId) {
+                return ajax("/api/buy", { iceCreamId: iceCreamId, buyer: currentUserId }, "POST");
+            }).then(function(response) {
+                onBought(iceCreamId);
             });
         };
     }
