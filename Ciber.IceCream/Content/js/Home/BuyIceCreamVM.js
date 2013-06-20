@@ -11,6 +11,7 @@
             onBought = callback;
         };
         
+
         this.buy = function () {
             var iceCreamId = self.selectedIceCream().id;
 

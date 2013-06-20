@@ -36,7 +36,8 @@
                  includeAll: true
             }, "GET").then(mapResult(function (raw) {
                 return new IceCream(raw);
-            })).then(filterResult(function(iceCream) {
+            })).then(filterResult(function (iceCream) {
+                return true;
                 return iceCream.quantityAvailable > 0;
             })).then(self.iceCreams);
             

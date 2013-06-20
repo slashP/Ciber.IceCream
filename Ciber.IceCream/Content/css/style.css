@@ -113,6 +113,49 @@ ul.is-list li{
     margin-right: 0.5em;
 }
 
+.ice-cream-popup h2{
+    color: #fcfbe3;
+    padding: 0 0.5em;
+    position: absolute;
+    text-shadow: 0 2px 5px #755C3B;
+    top: -0.75em;
+}
+.ice-cream-popup img {
+    width: 100%;
+}
+.ice-cream-popup .ice-cream-popup-bottom {
+    background: #fcfbe3;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.25em 0.5em;
+    position: absolute;
+}
+.ice-cream-popup .ice-cream-popup-bottom .buy-button{
+    float: right;
+}
+
+.authenticate-popup {
+    padding: 0 0.5em 1em 0.5em;
+}
+.authenticate-popup input, 
+.authenticate-popup label {
+    display: inline-block;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+}
+.authenticate-popup input {
+    width: 75%;
+}
+.authenticate-popup button {
+    width: 25%;
+}
+
 nav {
 
 	background: #fbcfcf;
@@ -151,10 +194,7 @@ nav ul li a.active{
 	text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
 }
 
-
-.pop-over-cover {
-    background: rgba(0, 0, 0, 0.5);
-
+.pop-over-container {
     top: 0;
     left: 0;
     right: 0;
@@ -163,17 +203,37 @@ nav ul li a.active{
     z-index: 10;
 }
 
-.pop-over {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 5px black;
-    margin: 3em 0.25em;
-    overflow: hidden;
-    max-height: 100%;
-    position: fixed;
+.pop-over-cover {
+    background: rgba(0, 0, 0, 0.5);
+
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 11;
+    position: absolute;
+}
+
+.pop-over {
+    margin: 3em 0.25em;
+    max-height: 100%;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.pop-over > div{
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px black;
+    overflow: hidden;
+    position: relative;
+}
+.pop-over-title {
+    color: #fcfbe3;
+    margin: -0.75em 0;
+    padding: 0 0.25em;
+    position: absolute;
+    text-shadow: 0 2px 5px #755c3b;
+    z-index: 13;
 }

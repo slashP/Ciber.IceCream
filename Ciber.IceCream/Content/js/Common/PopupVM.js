@@ -23,6 +23,16 @@
             self.isPopupVisible(false);
             onPopupClosed(false);
         };
+
+
+        this.isPopupVisible.extend({
+            throttledSubscribe: {
+                throttle: 1,
+                subscribe: function(value) {
+                    document.body.style.overflow = value ? "hidden" : "auto";
+                }
+            }
+        });
         
         init: {
             onPopupClosed = popupService.__subscribe__(self.showPopup, self.hidePopup);

@@ -12,7 +12,7 @@
 </head>
     <body>
         <div data-viewmodel="Common/PopupVM">
-            <div data-bind="if: isPopupVisible, visible: isPopupVisible" style="display: none">
+            <div data-bind="if: isPopupVisible, visible: isPopupVisible" style="display: none" class="pop-over-container">
                 <div class="pop-over-cover" data-bind="click: hidePopup"></div>
                 <a href="#" class="close-pop-over" data-bind="click: hidePopup"></a>
                 <div class="pop-over" data-bind="template: { name: template, data: viewmodel }"></div>
@@ -29,8 +29,13 @@
         
         
         <script type="text/template" id="AuthenticationPopup">
-            <label>Ansattnummer:<input type="text" data-bind="value: buyerId"/></label>
-            <button data-bind="click: authenticate">OK</button>
+            <h2 class="pop-over-title">Ansattnummer</h2>
+            <div class="authenticate-popup">
+                <p>Skriv inn ansattnummeret ditt her for å kjøpe is</p>
+                <input type="text" data-bind="value: buyerId"/>
+                <button data-bind="click: authenticate">OK</button>
+            </div>
+        
         </script>
         
     @RenderSection("scripts", false)

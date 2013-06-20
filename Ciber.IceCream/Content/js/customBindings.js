@@ -35,4 +35,58 @@
 
         }
     };
+    
+
+
+    /**
+usage:
+
+this.observable.extend({
+    throttledSubscribe: {
+        throttle: 500, //milliseconds
+        subscribe: function(value){
+            doAjax(value);
+        }
+    }
+});
+
+
+this.onload = function(){
+    //does not cause throttledSubscribe to get called
+    this.observable.updateWithoutNotifyingSubscriber(newValue);
+};
+
+this.setManually = function(newValue){
+    //does not cause throttledSubscribe to get called the next time the observable is set
+    this.observable.disregardNextUpdate();
+    this.observable(newValue);
+    //from now on the observable will call
+}
+*/
+
+    ko.extenders.throttledSubscribe = function (target, params) {
+        var throttleTime = params.throttle;
+        var subscriber = params.subscribe;
+
+        var updating = false;
+        target.disregardNextUpdate = function () {
+            updating = true;
+        };
+        target.updateWithoutNotifyingSubscriber = function (value) {
+            updating = true;
+            target(value);
+        };
+
+        var throttledComputed = ko.computed(function () {
+            return target();
+        }).extend({ throttle: throttleTime });
+
+        throttledComputed.subscribe(function (value) {
+            if (updating == false) {
+                subscriber(value);
+            } else {
+                updating = false;
+            }
+        });
+    };
 });

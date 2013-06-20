@@ -20,10 +20,13 @@
 
 
 <script type="text/template" id="BuyIceCreamPopup">
+    <h2 class="pop-over-title" data-bind="text: selectedIceCream().title"></h2>
     <div data-bind="with: selectedIceCream" class="ice-cream-popup">
-        <h2 data-bind="text: title"></h2>
         <img data-bind="attr: { src: imageURL }">
-        <div class="price" data-bind="currency: price"></div>
+        <div class="ice-cream-popup-bottom">
+            <span class="price" data-bind="currency: price"></span>
+            <button class="buy-button" data-bind="click: $parent.buy">Kjøp isen</button>
+        </div>
     </div>
-    <button data-bind="click: buy">Kjøp isen</button>
+
 </script>
