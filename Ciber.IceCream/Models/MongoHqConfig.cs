@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using MongoDB.Driver;
+using System.Linq;
 
 namespace CiberIs.Models
 {
@@ -7,7 +8,9 @@ namespace CiberIs.Models
     {
         public static MongoDatabase RetrieveMongoHqDb()
         {
-            return new MongoClient(ConfigurationManager.ConnectionStrings["MONGOHQ_URL"].ConnectionString).GetServer().GetDatabase("8e7921a9_3499_4c0e_813e_934605eabbf2");
+            var connectionString = ConfigurationManager.ConnectionStrings["MONGOHQ_URL"].ConnectionString;
+            var databaseName = connectionString.Split('/').Last();
+            return new MongoClient(connectionString).GetServer().GetDatabase(databaseName);
         }
     }
 }
