@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 using MongoDB.Driver;
-using System.Linq;
 
 namespace CiberIs.Models
 {
