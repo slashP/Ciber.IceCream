@@ -8,9 +8,12 @@ namespace CiberIs.Models
     {
         public static MongoDatabase RetrieveMongoHqDb()
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["MONGOHQ_URL"].ConnectionString;
-            var databaseName = connectionString.Split('/').Last();
-            return new MongoClient(connectionString).GetServer().GetDatabase(databaseName);
+            var connectionstring = ConfigurationManager.AppSettings.Get("MONGOHQ_URL");
+            var url = new MongoUrl(connectionstring);
+            var client = new MongoClient(url);
+            var server = client.GetServer();
+
+            return server.GetDatabase(url.DatabaseName);
         }
     }
 }
