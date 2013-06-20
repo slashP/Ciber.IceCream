@@ -218,6 +218,59 @@
     <Content Include="Content\js\Domain\IceCream.js" />
     <Content Include="Content\js\FillFreezer\NewBrandVM.js" />
     <Content Include="Content\js\Home\BuyIceCreamVM.js" />
+    <Content Include="Content\js\libs\components\when\.gitignore" />
+    <Content Include="Content\js\libs\components\when\apply.js" />
+    <Content Include="Content\js\libs\components\when\callbacks.js" />
+    <Content Include="Content\js\libs\components\when\cancelable.js" />
+    <Content Include="Content\js\libs\components\when\debug.js" />
+    <Content Include="Content\js\libs\components\when\delay.js" />
+    <Content Include="Content\js\libs\components\when\function.js" />
+    <Content Include="Content\js\libs\components\when\guard.js" />
+    <Content Include="Content\js\libs\components\when\keys.js" />
+    <Content Include="Content\js\libs\components\when\LICENSE.txt" />
+    <Content Include="Content\js\libs\components\when\node\function.js" />
+    <Content Include="Content\js\libs\components\when\parallel.js" />
+    <Content Include="Content\js\libs\components\when\pipeline.js" />
+    <Content Include="Content\js\libs\components\when\poll.js" />
+    <Content Include="Content\js\libs\components\when\sequence.js" />
+    <Content Include="Content\js\libs\components\when\test\all-test.js" />
+    <Content Include="Content\js\libs\components\when\test\any-test.js" />
+    <Content Include="Content\js\libs\components\when\test\apply-test.js" />
+    <Content Include="Content\js\libs\components\when\test\buster.js" />
+    <Content Include="Content\js\libs\components\when\test\callbacks-test.js" />
+    <Content Include="Content\js\libs\components\when\test\cancelable-test.js" />
+    <Content Include="Content\js\libs\components\when\test\curl-config.js" />
+    <Content Include="Content\js\libs\components\when\test\debug-test.js" />
+    <Content Include="Content\js\libs\components\when\test\defer-test.js" />
+    <Content Include="Content\js\libs\components\when\test\delay-test.js" />
+    <Content Include="Content\js\libs\components\when\test\function-test.js" />
+    <Content Include="Content\js\libs\components\when\test\guard-test.js" />
+    <Content Include="Content\js\libs\components\when\test\isPromise-test.js" />
+    <Content Include="Content\js\libs\components\when\test\join-test.js" />
+    <Content Include="Content\js\libs\components\when\test\keys-test.js" />
+    <Content Include="Content\js\libs\components\when\test\map-test.js" />
+    <Content Include="Content\js\libs\components\when\test\node\function-test.js" />
+    <Content Include="Content\js\libs\components\when\test\parallel-test.js" />
+    <Content Include="Content\js\libs\components\when\test\pipeline-test.js" />
+    <Content Include="Content\js\libs\components\when\test\poll-test.js" />
+    <Content Include="Content\js\libs\components\when\test\promise-test.js" />
+    <Content Include="Content\js\libs\components\when\test\promises-aplus-adapter.js" />
+    <Content Include="Content\js\libs\components\when\test\reduce-test.js" />
+    <Content Include="Content\js\libs\components\when\test\reject-test.js" />
+    <Content Include="Content\js\libs\components\when\test\resolve-test.js" />
+    <Content Include="Content\js\libs\components\when\test\run.js" />
+    <Content Include="Content\js\libs\components\when\test\sequence-test.js" />
+    <Content Include="Content\js\libs\components\when\test\settle-test.js" />
+    <Content Include="Content\js\libs\components\when\test\some-test.js" />
+    <Content Include="Content\js\libs\components\when\test\timeout-test.js" />
+    <Content Include="Content\js\libs\components\when\test\unfold-test.js" />
+    <Content Include="Content\js\libs\components\when\test\unfold\list-test.js" />
+    <Content Include="Content\js\libs\components\when\test\when-test.js" />
+    <Content Include="Content\js\libs\components\when\timed.js" />
+    <Content Include="Content\js\libs\components\when\timeout.js" />
+    <Content Include="Content\js\libs\components\when\unfold.js" />
+    <Content Include="Content\js\libs\components\when\unfold\list.js" />
+    <Content Include="Content\js\libs\components\when\when.js" />
     <Content Include="Content\js\libs\es5-shim.min.js" />
     <Content Include="Content\js\libs\jquery-1.9.1.js" />
     <Content Include="Content\js\libs\knockout-2.1.0.js" />
@@ -295,6 +348,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Report\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\js\libs\components\when\.editorconfig" />
+    <Content Include="Content\js\libs\components\when\.jshintignore" />
+    <Content Include="Content\js\libs\components\when\.jshintrc" />
+    <Content Include="Content\js\libs\components\when\.travis.yml" />
+    <Content Include="Content\js\libs\components\when\bower.json" />
+    <Content Include="Content\js\libs\components\when\CHANGES.md" />
+    <Content Include="Content\js\libs\components\when\docs\api.md" />
+    <Content Include="Content\js\libs\components\when\package.json" />
+    <Content Include="Content\js\libs\components\when\README.md" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
