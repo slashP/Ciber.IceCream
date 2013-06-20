@@ -24,8 +24,7 @@ namespace CiberIs
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //Database.SetInitializer(new DbInitializer());
-            //new UsersContext().UserProfiles.Find(1);
+            Database.SetInitializer(new CreateDatabaseIfNotExists<UsersContext>());
         }
     }
 }
