@@ -25,8 +25,7 @@
 
         this.showBuyPopup = function (iceCream) {
             var buyIceCream = new BuyIceCreamVM(iceCream);
-            var popup = popupService.createPopup("BuyIceCreamPopup", buyIceCream).open();
-            buyIceCream.onBought(popup.close);
+            popupService.createPopup("BuyIceCreamPopup", buyIceCream).open();
         };
         
         init: {

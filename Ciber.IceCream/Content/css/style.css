@@ -21,6 +21,17 @@ html, body {
     font-size: large;
 }
 
+.float-right {
+    float: right;
+}
+
+.spinner {
+    display: inline-block;
+    width: 43px;
+    height: 11px;
+    background: url(gfx/spinner.gif);
+}
+
 h1{
 	
     background: rgb(251,207,207); /* Old browsers */
@@ -120,7 +131,7 @@ ul.is-list li{
     text-shadow: 0 2px 5px #755C3B;
     top: -0.75em;
 }
-.ice-cream-popup img {
+.ice-cream-popup .img {
     width: 100%;
 }
 .ice-cream-popup .ice-cream-popup-bottom {
@@ -131,9 +142,6 @@ ul.is-list li{
     bottom: 0;
     padding: 0.25em 0.5em;
     position: absolute;
-}
-.ice-cream-popup .ice-cream-popup-bottom .buy-button{
-    float: right;
 }
 
 .authenticate-popup {

@@ -21,11 +21,19 @@
 
 <script type="text/template" id="BuyIceCreamPopup">
     <h2 class="pop-over-title" data-bind="text: selectedIceCream().title"></h2>
-    <div data-bind="with: selectedIceCream" class="ice-cream-popup">
-        <img data-bind="attr: { src: imageURL }">
+    <div class="ice-cream-popup">
+        <img class="img" data-bind="attr: { src: selectedIceCream().imageURL }">
         <div class="ice-cream-popup-bottom">
-            <span class="price" data-bind="currency: price"></span>
-            <button class="buy-button" data-bind="click: $parent.buy">Kjøp isen</button>
+            <span class="price" data-bind="currency: selectedIceCream().price"></span>
+            <!-- ko if:showBuyButton -->
+            <button class="buy-button float-right" data-bind="click: buy">Kjøp isen</button>
+            <!-- /ko -->
+            <!-- ko if:showSpinner -->
+            <img class="spinner float-right" />
+            <!-- /ko -->
+            <!-- ko if:hasBought -->
+            <span class="buy-success float-right">Kos deg med isen!</span>
+            <!-- /ko -->
         </div>
     </div>
 
