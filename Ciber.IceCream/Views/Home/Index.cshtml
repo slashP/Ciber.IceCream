@@ -34,6 +34,7 @@
             <!-- ko if:hasBought -->
             <span class="buy-success float-right">Kos deg med isen!</span>
             <!-- /ko -->
+            <span class="float-right" data-bind="text: errorMessage, visible: errorMessage().length > 0"></span>
         </div>
     </div>
 

@@ -7,6 +7,7 @@
         this.selectedIceCream = ko.observable(selectedIceCream);
         this.isBuying = ko.observable(false);
         this.hasBought = ko.observable(false);
+        this.errorMessage = ko.observable("");
 
 
         this.showBuyButton = ko.computed(function () {
@@ -22,9 +23,16 @@
             currentUser.authenticate(
             ).then(function (currentUserId) {
                 return ajax("/api/buy", { iceCreamId: iceCreamId, buyer: currentUserId }, "POST");
-            }).then(function(response) {
-                self.hasBought(true);
-            });
+            }).then(
+                function (response) {
+                    self.hasBought(true);
+                },
+                function (error) {
+                    if (error.status === 409) {
+                        self.errorMessage("Ikke flere igjen av denne isen.");
+                    }
+                }
+            );
         };
     }
 
