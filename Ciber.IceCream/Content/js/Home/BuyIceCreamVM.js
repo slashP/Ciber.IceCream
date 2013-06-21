@@ -24,7 +24,7 @@
             ).then(function (currentUserId) {
                 return ajax("/api/buy", { iceCreamId: iceCreamId, buyer: currentUserId }, "POST");
             }).then(
-                function (response) {
+                function () {
                     self.hasBought(true);
                 },
                 function (error) {
