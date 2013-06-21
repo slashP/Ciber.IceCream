@@ -19,6 +19,7 @@ namespace CiberIs.Controllers
             try
             {
                 ice.Quantity--;
+                if(ice.Quantity < 0) throw new HttpResponseException(HttpStatusCode.Conflict);
                 _mongoDb.GetCollection<IceCream>("IceCreams").Save(ice);
                 _mongoDb.GetCollection<Purchase>("Purchases").Insert(new Purchase() { Price = ice.Price, Buyer = int.Parse(data.Get("buyer")), Time = DateTime.UtcNow });
             }

@@ -22,8 +22,11 @@
         @RenderBody()
         <nav>
             <ul>
-                <li>@Html.ActionLink("Kjøp is!", "Index", "Home")
-                <li>@Html.ActionLink("Fyll Frysern!", "Index", "FillFreezer")
+                <li>@Html.ActionLink("Kjøp is!", "Index", "Home")</li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Fyll Frysern!", "Index", "FillFreezer")</li>
+                    }
             </ul>
         </nav>
         
