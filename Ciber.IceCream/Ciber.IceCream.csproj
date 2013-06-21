@@ -298,6 +298,7 @@
     <Content Include="Content\js\Service\currentUser.js" />
     <Content Include="Content\js\Service\popupService.js" />
     <Content Include="favicon.ico" />
+    <Content Include="ForceBuild.txt" />
     <Content Include="Global.asax" />
     <Content Include="Content\js\Home\IceCreamListVM.js" />
     <Content Include="Web.config">

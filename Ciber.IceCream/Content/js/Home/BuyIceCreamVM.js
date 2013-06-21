@@ -23,16 +23,14 @@
             currentUser.authenticate(
             ).then(function (currentUserId) {
                 return ajax("/api/buy", { iceCreamId: iceCreamId, buyer: currentUserId }, "POST");
-            }).then(
-                function () {
+            }).then(function(response) {
                     self.hasBought(true);
-                },
-                function (error) {
-                    if (error.status === 409) {
+            }, function(reason) {
+                if (reason.status === 409) {
                         self.errorMessage("Ikke flere igjen av denne isen.");
                     }
-                }
-            );
+                self.isBuying(false);
+            });
         };
     }
 

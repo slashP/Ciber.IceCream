@@ -11,7 +11,9 @@
             <img data-bind="attr: { src: imageURL }">
             <div class="ice-cream-info">
                 <h2 data-bind="text: title"></h2>
-                <span class="price" data-bind="currency: price"></span>
+                <span class="price">
+                    <span data-bind="currency: price"></span>
+                </span>
             </div>
         </li>
     </ul>
@@ -24,7 +26,8 @@
     <div class="ice-cream-popup">
         <img class="img" data-bind="attr: { src: selectedIceCream().imageURL }">
         <div class="ice-cream-popup-bottom">
-            <span class="price" data-bind="currency: selectedIceCream().price"></span>
+            <span data-bind="text: selectedIceCream().quantityAvailable"></span> is,
+            <span data-bind="currency: selectedIceCream().price"></span> per stykk
             <!-- ko if:showBuyButton -->
             <button class="buy-button float-right" data-bind="click: buy">Kjøp isen</button>
             <!-- /ko -->
