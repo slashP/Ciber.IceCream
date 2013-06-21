@@ -19,7 +19,7 @@
         var popup = {
             open: function () {
                 console.log("open popup");
-                return openPopup({ template: template, viewmodel: viewmodel, onClose: onClose, closeRequested: false});
+                return openPopup({ template: template, viewmodel: viewmodel, onClose: onClose ? [onClose] : [], closeRequested: false});
             }
         };
         return popup;
@@ -36,6 +36,9 @@
                 } else {
                     popup.closeRequested = true;
                 }
+            },
+            onClose: function(onClose) {
+                popup.onClose.push(onClose);
             }
         };
     }
@@ -43,8 +46,9 @@
     function popupClosed(result) {
         console.log("popupClosed");
         var popup = _popupStack.pop();
-        if (popup.onClose)
-            popup.onClose(result);
+        popup.onClose.forEach(function(onClose) {
+            onClose(result);
+        });
         if (_popupStack.length > 0) {
             var nextPopup = topOfStack();
             if (nextPopup.closeRequested) {

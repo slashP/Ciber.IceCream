@@ -214,6 +214,7 @@
     <Content Include="Content\images\is_3.jpg" />
     <Content Include="Content\js\app.js" />
     <Content Include="Content\js\Common\AuthenticateVM.js" />
+    <Content Include="Content\js\Common\NavBarVM.js" />
     <Content Include="Content\js\Common\PopupVM.js" />
     <Content Include="Content\js\customBindings.js" />
     <Content Include="Content\js\Domain\IceCream.js" />

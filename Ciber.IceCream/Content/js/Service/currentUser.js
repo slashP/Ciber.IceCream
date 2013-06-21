@@ -19,9 +19,11 @@
             }, function() {
                 var popup = _popup.open();
                 var deferred = when.defer();
+                popup.onClose(deferred.resolver.reject);
                 _authenticateVM.onAuthenticated(deferred.resolver);
                 return deferred.promise.then(function(userId) {
                     localStorage.setItem("CiberIceUserId", userId);
+                    localStorage.setItem("CiberIceUserIsAdmin", userId == 250);
                     popup.close();
                     return userId;
                 });
@@ -30,12 +32,18 @@
     }
     
     function logout() {
-        
+        localStorage.setItem("CiberIceUserId", "");
+        localStorage.setItem("CiberIceUserIsAdmin", "");
+    }
+    
+    function isAdmin() {
+        return localStorage.getItem("CiberIceUserIsAdmin");
     }
 
     return {
         authenticate: authenticate,
-        logout: logout
+        logout: logout,
+        isAdmin: isAdmin
     };
 
 });

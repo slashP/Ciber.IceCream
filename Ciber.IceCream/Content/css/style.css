@@ -13,10 +13,9 @@ HEX     | RGB         | DARKER  | NAME
 
 */
 
-
 html, body {
     margin: 0;
-	font-family: 'Lily Script One', cursive;
+	font-family: Helvetica, Arial, sans-serif;
     background: #FCFBE3;
     font-size: large;
 }
@@ -75,6 +74,7 @@ h2{
 	color: #755C3B;
 	margin: 0;
 	padding: 0.5em;
+    font-family: 'Lily Script One', cursive;
 }
 
 
@@ -122,6 +122,7 @@ ul.is-list li{
     float: right;
     font-size: small;
     margin-right: 0.5em;
+    font-family: 'Lily Script One', cursive;
 }
 
 .ice-cream-popup h2{
@@ -167,7 +168,7 @@ ul.is-list li{
 nav {
 
 	background: #fbcfcf;
-
+    font-family: 'Lily Script One', cursive;
 	border-top: 3px solid #E0B9B9;
 
 }

@@ -28,8 +28,9 @@
         this.isPopupVisible.extend({
             throttledSubscribe: {
                 throttle: 1,
-                subscribe: function(value) {
+                subscribe: function (value) {
                     document.body.style.overflow = value ? "hidden" : "auto";
+                    document.body.parentNode.style.overflow = value ? "hidden" : "auto";
                 }
             }
         });

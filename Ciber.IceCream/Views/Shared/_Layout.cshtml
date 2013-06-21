@@ -20,13 +20,9 @@
         </div>
 
         @RenderBody()
-        <nav>
+        <nav data-viewmodel="Common/NavBarVM">
             <ul>
-                <li>@Html.ActionLink("Kjøp is!", "Index", "Home")</li>
-                    @if (User.IsInRole("admin"))
-                    {
-                        <li>@Html.ActionLink("Fyll Frysern!", "Index", "FillFreezer")</li>
-                    }
+                <li><a href="#" data-bind="click: logout">Log ut</a>
             </ul>
         </nav>
         

@@ -1,4 +1,4 @@
-﻿define(["Home/BuyIceCreamVM", "Domain/IceCream", "Service/popupService", "knockout", "Service/ajax", "when"], function(BuyIceCreamVM, IceCream, popupService, ko, ajax, when) {
+﻿define(["Home/BuyIceCreamVM", "Domain/IceCream", "Service/popupService", "knockout", "Service/ajax", "when", "Service/currentUser"], function(BuyIceCreamVM, IceCream, popupService, ko, ajax, when, currentUser) {
 
 
 
@@ -36,7 +36,10 @@
             }, "GET").then(mapResult(function (raw) {
                 return new IceCream(raw);
             })).then(filterResult(function (iceCream) {
-                return iceCream.quantityAvailable > 0;
+                if(currentUser.isAdmin)
+                    return true;
+                else
+                    return iceCream.quantityAvailable > 0;
             })).then(self.iceCreams);
             
         }
