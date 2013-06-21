@@ -23,6 +23,10 @@
         <nav data-viewmodel="Common/NavBarVM">
             <ul>
                 <li><a href="#" data-bind="click: logout">Log ut</a>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>@Html.ActionLink("Legg til ny type is", "Index", "FillFreezer")</li>
+                    }
             </ul>
         </nav>
         
