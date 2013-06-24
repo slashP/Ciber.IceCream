@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 using CiberIs.Models;
-using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 using System.Linq;
 
 namespace CiberIs.Controllers
 {
     public class IceCreamController : ApiController
     {
-        private readonly MongoDatabase _mongoDb = MongoHqConfig.RetrieveMongoHqDb();
+        private readonly IMongoDb _mongoDb;
+
+        public IceCreamController(IMongoDb mongoDb)
+        {
+            _mongoDb = mongoDb;
+        }
 
         public IEnumerable<dynamic> GetIceCreams()
         {
-            return _mongoDb.GetCollection<IceCream>("IceCreams").AsQueryable().Where(x => x.Quantity > 0).Select(x => new
+            return _mongoDb.GetCollection<IceCream>("IceCreams").Where(x => x.Quantity > 0).Select(x => new
             {
                 x.Title,
                 x.Price,
@@ -46,7 +49,7 @@ namespace CiberIs.Controllers
             if (iceCream == null) throw new HttpResponseException(HttpStatusCode.BadRequest);
             try
             {
-                _mongoDb.GetCollection<IceCream>("IceCreams").Insert(iceCream);
+                _mongoDb.Insert(iceCream, "IceCreams");
             }
             catch (MongoException e)
             {
@@ -60,14 +63,14 @@ namespace CiberIs.Controllers
         public dynamic Put(int quantity, string iceCreamId, int price)
         {
             if (quantity == 0 || iceCreamId == null) throw new HttpResponseException(HttpStatusCode.BadRequest);
-            var iceCream = _mongoDb.GetCollection<IceCream>("IceCreams").FindOneById(new ObjectId(iceCreamId));
+            var iceCream = _mongoDb.FindById<IceCream>(iceCreamId, "IceCreams");
             if (iceCream == null) return new { success = false, errorMessage = "No ice cream with that id" };
             try
             {
                 var newPrice = GetPriceBasedOnQuantity(iceCream, price, quantity);
                 iceCream.Quantity += quantity;
                 iceCream.Price = newPrice;
-                _mongoDb.GetCollection<IceCream>("IceCreams").Save(iceCream);
+                _mongoDb.Save(iceCream, "IceCreams");
             }
             catch (MongoException e)
             {

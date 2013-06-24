@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciber.IceCream", "Ciber.IceCream\Ciber.IceCream.csproj", "{5376F25D-5A9E-4F98-8420-8733208C650A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ciber.IceCream.Test", "Ciber.IceCream.Test\Ciber.IceCream.Test.csproj", "{5ACE85DF-581E-4676-8409-0C4E106948E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{5376F25D-5A9E-4F98-8420-8733208C650A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5376F25D-5A9E-4F98-8420-8733208C650A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5376F25D-5A9E-4F98-8420-8733208C650A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ACE85DF-581E-4676-8409-0C4E106948E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ACE85DF-581E-4676-8409-0C4E106948E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ACE85DF-581E-4676-8409-0C4E106948E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ACE85DF-581E-4676-8409-0C4E106948E4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
