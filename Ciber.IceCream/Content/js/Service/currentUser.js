@@ -37,7 +37,7 @@
     }
     
     function isAdmin() {
-        return localStorage.getItem("CiberIceUserIsAdmin");
+        return localStorage.getItem("CiberIceUserIsAdmin") === "true";
     }
 
     return {
