@@ -36,7 +36,7 @@
             }, "GET").then(mapResult(function (raw) {
                 return new IceCream(raw);
             })).then(filterResult(function (iceCream) {
-                if(currentUser.isAdmin())
+                if (currentUser.isAdmin() === "true")
                     return true;
                 else
                     return iceCream.quantityAvailable > 0;
