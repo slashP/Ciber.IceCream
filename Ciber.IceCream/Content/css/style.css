@@ -125,6 +125,10 @@ ul.is-list li{
     font-family: 'Lily Script One', cursive;
 }
 
+.pop-over .ice-cream-popup {
+    overflow: hidden;
+}
+
 .ice-cream-popup h2{
     color: #fcfbe3;
     padding: 0 0.5em;
@@ -223,8 +227,11 @@ nav ul li a.active{
 }
 
 .pop-over {
-    margin: 3em 0.25em;
-    max-height: 100%;
+    position: absolute;
+    top: 3em;
+    left: 0.25em;
+    right: 0.25em;
+    bottom: 3em;
     -o-box-sizing: border-box;
     -ms-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -235,8 +242,9 @@ nav ul li a.active{
     background: white;
     border-radius: 10px;
     box-shadow: 0 0 5px black;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
+    max-height: 100%;
 }
 .pop-over-title {
     color: #fcfbe3;
