@@ -4,7 +4,8 @@ require.config({
     baseUrl: "/content/js",
     paths: {
         "ordnung": "ordnung",
-        "knockout": "libs/knockout-2.1.0"
+        "knockout": "libs/knockout-2.1.0",
+        "fastclick": "libs/fastclick"
     },
     packages: [
         { name: 'when', location: 'libs/components/when/', main: 'when' },
