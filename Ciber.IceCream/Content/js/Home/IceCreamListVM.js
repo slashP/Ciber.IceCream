@@ -37,7 +37,7 @@
                 if (currentUser.isAdmin())
                     return true;
                 else
-                    return iceCream.quantityAvailable > 0;
+                    return iceCream.quantityAvailable() > 0;
             })).then(self.iceCreams);
             // FastClick
             FastClick.attach(document.body);

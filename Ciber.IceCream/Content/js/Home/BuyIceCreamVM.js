@@ -24,7 +24,8 @@
             ).then(function (currentUserId) {
                 return ajax("/api/buy", { iceCreamId: iceCreamId, buyer: currentUserId }, "POST");
             }).then(function(response) {
-                    self.hasBought(true);
+                self.hasBought(true);
+                self.selectedIceCream().quantityAvailable(response.quantity);
             }, function(reason) {
                 if (reason.status === 409) {
                         self.errorMessage("Ikke flere igjen av denne isen.");
