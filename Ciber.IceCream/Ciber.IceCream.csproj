@@ -293,6 +293,7 @@
     <Content Include="Content\js\libs\components\when\unfold\list.js" />
     <Content Include="Content\js\libs\components\when\when.js" />
     <Content Include="Content\js\libs\es5-shim.min.js" />
+    <Content Include="Content\js\libs\fastclick.js" />
     <Content Include="Content\js\libs\jquery-1.9.1.js" />
     <Content Include="Content\js\libs\knockout-2.1.0.js" />
     <Content Include="Content\js\libs\require-2.1.1.js" />

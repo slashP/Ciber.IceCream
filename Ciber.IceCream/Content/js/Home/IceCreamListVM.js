@@ -1,17 +1,15 @@
-﻿define(["Home/BuyIceCreamVM", "Domain/IceCream", "Service/popupService", "knockout", "Service/ajax", "when", "Service/currentUser"], function(BuyIceCreamVM, IceCream, popupService, ko, ajax, when, currentUser) {
+﻿define(["Home/BuyIceCreamVM", "Domain/IceCream", "Service/popupService", "knockout", "Service/ajax", "when", "Service/currentUser", "fastclick"], function (BuyIceCreamVM, IceCream, popupService, ko, ajax, when, currentUser, FastClick) {
 
 
 
     function mapResult(method) {
         return function (array) {
-            console.log("map", array);
             return array.map(method);
         };
     }
 
     function filterResult(method) {
         return function (array) {
-            console.log("filter", array);
             return array.filter(method);
         };
     }
@@ -41,7 +39,8 @@
                 else
                     return iceCream.quantityAvailable > 0;
             })).then(self.iceCreams);
-            
+            // FastClick
+            FastClick.attach(document.body);
         }
 
     }
