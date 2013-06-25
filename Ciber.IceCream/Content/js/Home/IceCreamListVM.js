@@ -8,13 +8,6 @@
         };
     }
 
-    function filterResult(method) {
-        return function (array) {
-            return array.filter(method);
-        };
-    }
-    
-
     function IceCreamListVM() {
 
         var self = this;
