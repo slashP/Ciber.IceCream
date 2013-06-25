@@ -19,7 +19,9 @@ namespace CiberIs.Controllers
 
         public IEnumerable<dynamic> GetIceCreams()
         {
-            return _mongoDb.GetCollection<IceCream>("IceCreams").Where(x => x.Quantity > 0).Select(x => new
+            return User.IsInRole("admin") ? 
+                GetIceCreams(true) :
+                _mongoDb.GetCollection<IceCream>("IceCreams").Where(x => x.Quantity > 0).Select(x => new
             {
                 x.Title,
                 x.Price,

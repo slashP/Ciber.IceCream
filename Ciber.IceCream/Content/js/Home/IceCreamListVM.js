@@ -28,15 +28,9 @@
 
         init: {
                 var updateIceCreams = function() {
-                    ajax("/api/IceCream", {
-                        includeAll: true
-                    }, "GET").then(mapResult(function (raw) {
+                    ajax("/api/IceCream", {},
+                        "GET").then(mapResult(function (raw) {
                         return new IceCream(raw);
-                    })).then(filterResult(function (iceCream) {
-                        if (currentUser.isAdmin())
-                            return true;
-                        else
-                            return iceCream.quantityAvailable() > 0;
                     })).then(self.iceCreams);
                 };
                   setInterval(function() {
