@@ -19,7 +19,8 @@ define([], function(){
 
 	function ajax(url, object, method, callback){
 		var xhr = new XMLHttpRequest();
-		
+
+		var isGet = (method === "GET");
 		var isPost = (method === "POST");
 		var data = null;
 		
@@ -32,11 +33,9 @@ define([], function(){
 			}
 		}
 		
-		if(isPost){
-			url = addParamToUrl(url, "cacheKey", Math.floor(Math.random()*10000));
-		}
+		url = addParamToUrl(url, "cacheKey", Math.floor(Math.random()*10000));
 
-		xhr.open(isPost ? "POST" : "GET", url, true);
+		xhr.open(method, url, true);
 		xhr.setRequestHeader("Accept", "application/json");
 		
 		if(isPost && data){
@@ -44,12 +43,12 @@ define([], function(){
 			xhr.setRequestHeader("Content-length", data.length);
 			xhr.setRequestHeader("Connection", "close");
 		}
-		
-		xhr.onreadystatechange = function(){
-			if(xhr.readyState == 4){
-				callback(xhr);
-			}
-		}
+
+	    xhr.onreadystatechange = function() {
+	        if (xhr.readyState == 4) {
+	            callback(xhr);
+	        }
+	    };
 		
 		xhr.send(data);
 		return xhr;

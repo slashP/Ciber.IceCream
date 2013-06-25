@@ -148,6 +148,10 @@ ul.is-list li{
     padding: 0.25em 0.5em;
     position: absolute;
 }
+.ice-cream-popup-admin {
+    clear: both;
+    padding-top: 1em;
+}
 
 .authenticate-popup {
     padding: 0 0.5em 1em 0.5em;

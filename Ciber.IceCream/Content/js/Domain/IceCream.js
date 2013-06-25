@@ -3,7 +3,7 @@
         this.id = raw.Id;
         this.title = raw.Title || "";
         this.imageURL = raw.Image || "";
-        this.price = raw.Price || 0;
+        this.price = ko.observable(raw.Price || 0);
         this.quantityAvailable = ko.observable(raw.Quantity || 0);
     }
 
