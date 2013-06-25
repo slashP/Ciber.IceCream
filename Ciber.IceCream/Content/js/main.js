@@ -14,6 +14,7 @@ require.config({
     ]
 });
 
-require(["ordnung/loader", "customBindings"], function(load, customBindings) {
+require(["ordnung/loader", "fastclick", "customBindings"], function (load, FastClick, customBindings) {
+    FastClick.attach(document.body);
     load();
 });
