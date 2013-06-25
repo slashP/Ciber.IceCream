@@ -1,15 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Ciber Is</title>
-  <link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="/content/css/normalize.css">
-  <link rel="stylesheet" href="/content/css/style.css">
-  <meta 
-    name="viewport" 
-    content="width=device-width, initial-scale=1, maximum-scale=1">
-</head>
+    <head>
+        <!-- build should be the first meta tag :) i'm lazy. Used for require cache busting -->
+        <meta name="build" content="@ViewContext.Controller.GetType().Assembly.GetName().Version" />
+        <meta charset="utf-8">
+        <title>Ciber Is</title>
+        <link href='http://fonts.googleapis.com/css?family=Lily+Script+One' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/content/css/normalize.css">
+        <link rel="stylesheet" href="/content/css/style.css">
+        <meta 
+            name="viewport" 
+            content="width=device-width, initial-scale=1, maximum-scale=1">
+    </head>
     <body>
         <div data-viewmodel="Common/PopupVM">
             <div data-bind="if: isPopupVisible, visible: isPopupVisible" style="display: none" class="pop-over-container">

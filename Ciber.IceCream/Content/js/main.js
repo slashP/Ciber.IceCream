@@ -2,6 +2,7 @@
 
 require.config({
     baseUrl: "/content/js",
+    urlArgs: "bust=" + document.getElementsByTagName("meta")[0].getAttribute("content"),
     paths: {
         "ordnung": "ordnung",
         "knockout": "libs/knockout-2.1.0",
