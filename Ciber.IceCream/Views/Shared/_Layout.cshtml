@@ -27,7 +27,7 @@
                 <li><a href="#" data-bind="click: logout, visible: isLoggedIn" style="display: none">Log ut</a>
                     @if (User.IsInRole("admin"))
                     {
-                        <li>@Html.ActionLink("Legg til ny type is", "Index", "FillFreezer")</li>
+                        <li>@Html.ActionLink("Admin", "Index", "Admin")</li>
                     }
             </ul>
         </nav>
