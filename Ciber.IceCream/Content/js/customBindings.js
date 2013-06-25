@@ -1,7 +1,7 @@
 ﻿define(["knockout"], function(ko) {
     ko.bindingHandlers.currency = {
-        init: function(element, valueAccessor, allBindingsAccessor, context) {
-            var value = valueAccessor();
+        update: function(element, valueAccessor, allBindingsAccessor, context) {
+            var value = ko.utils.unwrapObservable(valueAccessor());
 
             ko.bindingHandlers.text.update(element, function() { return value + ",-"; }, allBindingsAccessor, context);
         }
