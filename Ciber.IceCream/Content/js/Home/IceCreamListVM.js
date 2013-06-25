@@ -1,4 +1,4 @@
-﻿define(["Home/BuyIceCreamVM", "Domain/IceCream", "Service/popupService", "knockout", "Service/ajax", "when", "Service/currentUser", "fastclick"], function (BuyIceCreamVM, IceCream, popupService, ko, ajax, when, currentUser, FastClick) {
+﻿define(["Home/BuyIceCreamVM", "Domain/IceCream", "Service/popupService", "knockout", "Service/ajax", "when", "Service/currentUser"], function (BuyIceCreamVM, IceCream, popupService, ko, ajax, when, currentUser) {
 
 
 
@@ -37,10 +37,8 @@
                 if (currentUser.isAdmin())
                     return true;
                 else
-                    return iceCream.quantityAvailable > 0;
+                    return iceCream.quantityAvailable() > 0;
             })).then(self.iceCreams);
-            // FastClick
-            FastClick.attach(document.body);
         }
 
     }

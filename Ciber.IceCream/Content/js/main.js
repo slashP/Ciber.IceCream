@@ -2,6 +2,7 @@
 
 require.config({
     baseUrl: "/content/js",
+    urlArgs: "bust=" + document.getElementsByTagName("meta")[0].getAttribute("content"),
     paths: {
         "ordnung": "ordnung",
         "knockout": "libs/knockout-2.1.0",
@@ -13,6 +14,7 @@ require.config({
     ]
 });
 
-require(["ordnung/loader", "customBindings"], function(load, customBindings) {
+require(["ordnung/loader", "fastclick", "customBindings"], function (load, FastClick, customBindings) {
+    FastClick.attach(document.body);
     load();
 });

@@ -31,7 +31,7 @@ namespace CiberIs.Controllers
             {
                 return new { success = false, errorMessage = e.Message };
             }
-            return new { success = true, errorMessage = string.Empty };
+            return new {success = true, errorMessage = string.Empty, quantity = ice.Quantity};
         }
     }
 }
