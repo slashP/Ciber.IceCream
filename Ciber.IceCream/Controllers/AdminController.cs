@@ -3,9 +3,9 @@
 namespace CiberIs.Controllers
 {
     [Authorize(Roles = "admin")]
-    public class FillFreezerController : Controller
+    public class AdminController : Controller
     {
-        public ActionResult AddNew()
+        public ActionResult Index()
         {
             return View();
         }

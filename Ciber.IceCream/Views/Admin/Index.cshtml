@@ -1,0 +1,11 @@
+﻿@model dynamic
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header><h1>Admin functions</h1></header>
+
+@Html.ActionLink("Generate or see reports of purchases", "Index", "Report")<br />
+@Html.ActionLink("Add new type of ice", "AddNew", "FillFreezer")<br />
+@Html.ActionLink("Add user as admin", "Index", "RoleAdmin")<br />

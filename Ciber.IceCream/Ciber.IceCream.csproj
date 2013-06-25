@@ -205,6 +205,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\FillFreezerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -237,6 +238,7 @@
     <Content Include="Content\js\Common\PopupVM.js" />
     <Content Include="Content\js\customBindings.js" />
     <Content Include="Content\js\Domain\IceCream.js" />
+    <Content Include="Content\js\FillFreezer\AdminIceCreamVM.js" />
     <Content Include="Content\js\FillFreezer\NewBrandVM.js" />
     <Content Include="Content\js\Home\BuyIceCreamVM.js" />
     <Content Include="Content\js\libs\components\when\.gitignore" />
@@ -350,7 +352,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\FillFreezer\Index.cshtml" />
+    <Content Include="Views\FillFreezer\AddNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -382,6 +384,9 @@
     <Content Include="Content\js\libs\components\when\docs\api.md" />
     <Content Include="Content\js\libs\components\when\package.json" />
     <Content Include="Content\js\libs\components\when\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

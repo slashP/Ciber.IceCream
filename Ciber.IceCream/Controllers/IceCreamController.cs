@@ -19,7 +19,9 @@ namespace CiberIs.Controllers
 
         public IEnumerable<dynamic> GetIceCreams()
         {
-            return _mongoDb.GetCollection<IceCream>("IceCreams").Where(x => x.Quantity > 0).Select(x => new
+            return User.IsInRole("admin") ? 
+                GetIceCreams(true) :
+                _mongoDb.GetCollection<IceCream>("IceCreams").Where(x => x.Quantity > 0).Select(x => new
             {
                 x.Title,
                 x.Price,
@@ -76,7 +78,7 @@ namespace CiberIs.Controllers
             {
                 return new { success = false, errorMessage = e.Message };
             }
-            return new { success = true, errorMessage = string.Empty};
+            return new { success = true, errorMessage = string.Empty, quantity = iceCream.Quantity, price = iceCream.Price};
         }
 
         private static int GetPriceBasedOnQuantity(IceCream iceCream, int price, int quantity)

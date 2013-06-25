@@ -1,9 +1,9 @@
-﻿define(["Service/currentUser", "knockout", "Service/ajax"], function(currentUser, ko, ajax) {
+﻿define(["FillFreezer/AdminIceCreamVM", "Service/currentUser", "knockout", "Service/ajax"], function(AdminIceCreamVM, currentUser, ko, ajax) {
 
     function BuyIceCreamVM(selectedIceCream) {
         var self = this;
 
-
+        this.admin = new AdminIceCreamVM(selectedIceCream);
         this.selectedIceCream = ko.observable(selectedIceCream);
         this.isBuying = ko.observable(false);
         this.hasBought = ko.observable(false);

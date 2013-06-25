@@ -12,7 +12,7 @@
             <div class="ice-cream-info">
                 <h2 data-bind="text: title"></h2>
                 <span class="price">
-                    <span data-bind="currency: price"></span>
+                    <span data-bind="currency: price()"></span>
                 </span>
             </div>
         </li>
@@ -29,16 +29,33 @@
             <span data-bind="text: selectedIceCream().quantityAvailable"></span> is,
             <span data-bind="currency: selectedIceCream().price"></span> per stykk
             <!-- ko if:showBuyButton -->
-            <button class="buy-button float-right" data-bind="click: buy">Kjøp isen</button>
+                <button class="buy-button float-right" data-bind="click: buy">Kjøp isen</button>
             <!-- /ko -->
             <!-- ko if:showSpinner -->
-            <img class="spinner float-right" />
+                <img class="spinner float-right" />
             <!-- /ko -->
             <!-- ko if:hasBought -->
-            <span class="buy-success float-right">Kos deg med isen!</span>
+                <span class="buy-success float-right">Kos deg med isen!</span>
             <!-- /ko -->
             <span class="float-right" data-bind="text: errorMessage, visible: errorMessage().length > 0"></span>
+            @if (User.IsInRole("admin"))
+            {
+                <div class="ice-cream-popup-admin" data-bind="with: admin">
+                    <!-- ko if:showAddButton -->
+                        <label>Antall<input type="number" data-bind="value: quantity"/></label>
+                        <label>Pris<input type="number" data-bind="value: price"/></label>
+                        <button class="float-right" data-bind="click: add">Fyll Fryseren</button>
+                    <!-- /ko -->
+                    <!-- ko if:showSpinner -->
+                        <img class="spinner float-right" />
+                    <!-- /ko -->
+                    <!-- ko if:hasAdded -->
+                        <span class="buy-success float-right">Fryseren fyllt</span>
+                    <!-- /ko -->
+                </div>
+            }
         </div>
+        
     </div>
 
 </script>

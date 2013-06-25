@@ -8,13 +8,6 @@
         };
     }
 
-    function filterResult(method) {
-        return function (array) {
-            return array.filter(method);
-        };
-    }
-    
-
     function IceCreamListVM() {
 
         var self = this;
@@ -25,21 +18,19 @@
             var buyIceCream = new BuyIceCreamVM(iceCream);
             popupService.createPopup("BuyIceCreamPopup", buyIceCream).open();
         };
-        
+
         init: {
-
-
-            ajax("/api/IceCream", {
-                 includeAll: true
-            }, "GET").then(mapResult(function (raw) {
-                return new IceCream(raw);
-            })).then(filterResult(function (iceCream) {
-                if (currentUser.isAdmin())
-                    return true;
-                else
-                    return iceCream.quantityAvailable() > 0;
-            })).then(self.iceCreams);
-        }
+                var updateIceCreams = function() {
+                    ajax("/api/IceCream", {},
+                        "GET").then(mapResult(function (raw) {
+                        return new IceCream(raw);
+                    })).then(self.iceCreams);
+                };
+                  setInterval(function() {
+                      updateIceCreams();
+                  }, 30000);
+                  updateIceCreams();
+              }
 
     }
 
