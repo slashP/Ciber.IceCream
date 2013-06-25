@@ -39,11 +39,16 @@
     function isAdmin() {
         return localStorage.getItem("CiberIceUserIsAdmin") === "true";
     }
+    
+    function isLoggedIn() {
+        return !!localStorage.getItem("CiberIceUserId");
+    }
 
     return {
         authenticate: authenticate,
         logout: logout,
-        isAdmin: isAdmin
+        isAdmin: isAdmin,
+        isLoggedIn: isLoggedIn
     };
 
 });

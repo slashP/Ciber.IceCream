@@ -5,7 +5,7 @@
 
         var self = this;
         var setIsLoggedIn = function() {
-            self.isLoggedIn(!!localStorage.getItem("CiberIceUserId"));
+            self.isLoggedIn(currentUser.isLoggedIn());
         };
         this.isLoggedIn = ko.observable(false);
 
