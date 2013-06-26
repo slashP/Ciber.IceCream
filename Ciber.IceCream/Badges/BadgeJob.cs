@@ -6,6 +6,7 @@ namespace CiberIs.Badges
 {
     public abstract class BadgeJob
     {
+        private static readonly object SyncObject = new object();
         public const string CollectionName = "Badges";
         protected BadgeJob()
         {
@@ -22,7 +23,10 @@ namespace CiberIs.Badges
         private void Callback(string key, object value, CacheItemRemovedReason reason)
         {
             if (reason != CacheItemRemovedReason.Expired) return;
-            AwardBadges();
+            lock (SyncObject)
+            {
+                AwardBadges();
+            }
             Insert();
         }
 

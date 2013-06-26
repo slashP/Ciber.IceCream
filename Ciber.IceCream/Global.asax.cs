@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -10,7 +8,6 @@ using System.Web.Routing;
 using CiberIs.Badges;
 using CiberIs.Models;
 using EmptyMvc4.Models;
-using CiberIs.Extensions;
 
 namespace CiberIs
 {
@@ -36,12 +33,8 @@ namespace CiberIs
                     typeof (OneFavouriteBadge),
                     typeof (MixItUpBadge)
                 };
-            badges.Each((x, i) => Task.Factory.StartNew(() =>
-                {
-                    var mongoDb = (IMongoDb) GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof (IMongoDb));
-                    Thread.Sleep(30000 * i);
-                    Activator.CreateInstance(x, mongoDb);
-                }));
+            var mongoDb = (IMongoDb)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IMongoDb));
+            badges.ForEach(x => Activator.CreateInstance(x, mongoDb));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace CiberIs.Badges
 {
     public class ConsistentBadge : BadgeJob
     {
-        private const string BadgeName = "Tre dager på rad";
+        private const string BadgeName = "Is tre dager på rad";
         private readonly IMongoDb _mongoDb;
 
         public ConsistentBadge(IMongoDb mongoDb)
