@@ -1,0 +1,23 @@
+﻿@model EmptyMvc4.Models.ChangeEmailModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header><h1>Change email</h1></header>
+
+@using (Html.BeginForm("ChangeEmail", "Account")) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Change Password Form</legend>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+            </li>
+        </ol>
+        <input type="submit" value="Change email" />
+    </fieldset>
+}

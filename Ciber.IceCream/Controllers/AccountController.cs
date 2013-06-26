@@ -138,6 +138,25 @@ namespace CiberIs.Controllers
             return View();
         }
 
+        public ActionResult ChangeEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangeEmail(ChangeEmailModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var db = new UsersContext();
+                var user = db.UserProfiles.First(x => x.UserName == User.Identity.Name);
+                user.Email = model.Email;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Admin");
+            }
+            return View(model);
+        }
+
         //
         // POST: /Account/Manage
 
