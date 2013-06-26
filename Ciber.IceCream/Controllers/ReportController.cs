@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Web.Mvc;
+using System.Web.Security;
 using CiberIs.Models;
 using EmptyMvc4.Models;
 using MongoDB.Driver;
@@ -69,7 +70,8 @@ namespace CiberIs.Controllers
                     From = new MailAddress(string.Format("admin@{0}", HttpContext.Request.Url.Host))
                 };
             var db = new UsersContext();
-            var users = db.UserProfiles.Where(x => x.Email != null);
+            var admins = Roles.GetUsersInRole("admin");
+            var users = db.UserProfiles.Where(x => x.Email != null && admins.Contains(x.UserName));
             if(!users.Any()) return;
             foreach (var user in users)
             {
