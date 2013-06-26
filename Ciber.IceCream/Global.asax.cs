@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using CiberIs.Badges;
+using CiberIs.Models;
 using EmptyMvc4.Models;
 
 namespace CiberIs
@@ -25,6 +23,11 @@ namespace CiberIs
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             Database.SetInitializer(new CreateDatabaseIfNotExists<UsersContext>());
+            new MorningGloryBadge((IMongoDb)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IMongoDb)));
+            new MedalsBadge((IMongoDb)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IMongoDb)));
+            new ConsistentBadge((IMongoDb)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IMongoDb)));
+            new OneFavouriteBadge((IMongoDb)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IMongoDb)));
+            new MixItUpBadge((IMongoDb)GlobalConfiguration.Configuration.DependencyResolver.GetService(typeof(IMongoDb)));
         }
     }
 }

@@ -204,6 +204,13 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Badges\BadgeJob.cs" />
+    <Compile Include="Badges\BadgeRepository.cs" />
+    <Compile Include="Badges\MixItUpBadge.cs" />
+    <Compile Include="Badges\OneFavouriteBadge.cs" />
+    <Compile Include="Badges\MedalsBadge.cs" />
+    <Compile Include="Badges\ConsistentBadge.cs" />
+    <Compile Include="Badges\MorningGloryBadge.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
@@ -218,6 +225,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\IceCream.cs" />
     <Compile Include="Models\IMongoDb.cs" />
     <Compile Include="Models\MongoDb.cs" />
