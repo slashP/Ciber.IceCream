@@ -72,9 +72,9 @@ namespace CiberIs.Controllers
             myMessage.Body = string.Format("{0} effectuated report. See attachment.", name);
             using (var ms = new MemoryStream(file))
             {
-                myMessage.Attachments.Add(new Attachment(ms, string.Format("Ice Report {0}", DateTime.UtcNow.EuropeanTime())));
+                myMessage.Attachments.Add(new Attachment(ms, string.Format("Ice Report {0}.xlsx", DateTime.UtcNow.EuropeanTime())));
+                smtpClient.Send(myMessage);
             }
-            smtpClient.Send(myMessage);
         }
 
         private byte[] GetFileReport(IList<Purchase> purchases)
