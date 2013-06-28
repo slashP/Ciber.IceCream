@@ -18,14 +18,15 @@ namespace CiberIs.Controllers
 
         public dynamic Post(FormDataCollection data)
         {
-            var ice = _mongoDb.FindById<IceCream>(data.Get("iceCreamId"), "IceCreams");
+            var iceCreamId = data.Get("iceCreamId");
+            var ice = _mongoDb.FindById<IceCream>(iceCreamId, "IceCreams");
             if (ice == null) throw new HttpResponseException(HttpStatusCode.ExpectationFailed);
             try
             {
                 ice.Quantity--;
                 if(ice.Quantity < 0) throw new HttpResponseException(HttpStatusCode.Conflict);
                 _mongoDb.Save(ice, "IceCreams");
-                _mongoDb.Insert(new Purchase() { Price = ice.Price, Buyer = int.Parse(data.Get("buyer")), Time = DateTime.UtcNow }, "Purchases");
+                _mongoDb.Insert(new Purchase() { Price = ice.Price, Buyer = int.Parse(data.Get("buyer")), Time = DateTime.UtcNow, IceCreamId = iceCreamId}, "Purchases");
             }
             catch (MongoException e)
             {

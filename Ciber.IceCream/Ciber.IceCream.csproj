@@ -204,6 +204,13 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Badges\BadgeJob.cs" />
+    <Compile Include="Badges\BadgeRepository.cs" />
+    <Compile Include="Badges\MixItUpBadge.cs" />
+    <Compile Include="Badges\OneFavouriteBadge.cs" />
+    <Compile Include="Badges\MedalsBadge.cs" />
+    <Compile Include="Badges\ConsistentBadge.cs" />
+    <Compile Include="Badges\MorningGloryBadge.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
@@ -212,11 +219,13 @@
     <Compile Include="Controllers\IceCreamController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Badge.cs" />
     <Compile Include="Models\IceCream.cs" />
     <Compile Include="Models\IMongoDb.cs" />
     <Compile Include="Models\MongoDb.cs" />
@@ -343,7 +352,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -387,6 +395,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Admin\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\ChangeEmail.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

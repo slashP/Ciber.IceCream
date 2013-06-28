@@ -12,5 +12,6 @@ namespace CiberIs.Models
         public DateTime? Time { get; set; }
         public int Buyer { get; set; }
         public bool IsPaidFor { get; set; }
+        public string IceCreamId { get; set; }
     }
 }

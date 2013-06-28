@@ -16,5 +16,6 @@ require.config({
 
 require(["ordnung/loader", "fastclick", "customBindings"], function (load, FastClick, customBindings) {
     FastClick.attach(document.body);
+    document.title = (document.URL.indexOf("ciberice-dev") !== -1 ? "DEV - " : "") + document.title;
     load();
 });

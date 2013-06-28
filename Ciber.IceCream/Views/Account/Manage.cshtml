@@ -27,6 +27,8 @@ else
     @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
 
+@Html.ActionLink("Change email", "ChangeEmail", "Account")
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

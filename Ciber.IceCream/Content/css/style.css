@@ -92,6 +92,7 @@ ul.is-list li{
 .ice-cream {
     position: relative;
 	max-height: 250px;
+    min-height: 200px;
     overflow: hidden;
 }
 
@@ -127,6 +128,7 @@ ul.is-list li{
 
 .pop-over .ice-cream-popup {
     overflow: hidden;
+    min-height: 50%;
 }
 
 .ice-cream-popup h2{

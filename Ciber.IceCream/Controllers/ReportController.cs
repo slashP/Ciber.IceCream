@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Web.Mvc;
+using System.Web.Security;
 using CiberIs.Models;
+using EmptyMvc4.Models;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using OfficeOpenXml;
+using CiberIs.Extensions;
 
 namespace CiberIs.Controllers
 {
@@ -53,7 +58,32 @@ namespace CiberIs.Controllers
                 purchase.IsPaidFor = true;
                 _mongoDb.GetCollection<Purchase>("Purchases").Save(purchase);
             }
+            SendEmailIfRegistered(file, User.Identity.Name);
             return File(file, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        }
+
+        private void SendEmailIfRegistered(byte[] file, string name)
+        {
+            var smtpClient = new SmtpClient();
+            var myMessage = new MailMessage
+                {
+                    From = new MailAddress(string.Format("admin@{0}", HttpContext.Request.Url.Host))
+                };
+            var db = new UsersContext();
+            var admins = Roles.GetUsersInRole("admin");
+            var users = db.UserProfiles.Where(x => x.Email != null && admins.Contains(x.UserName));
+            if(!users.Any()) return;
+            foreach (var user in users)
+            {
+                myMessage.To.Add(string.Format(@"<{0}>", user.Email));                
+            }
+            myMessage.Subject = "Ice cream report";
+            myMessage.Body = string.Format("{0} effectuated report. See attachment.", name);
+            using (var ms = new MemoryStream(file))
+            {
+                myMessage.Attachments.Add(new Attachment(ms, string.Format("Ice Report {0}.xlsx", DateTime.UtcNow.EuropeanTime())));
+                smtpClient.Send(myMessage);
+            }
         }
 
         private byte[] GetFileReport(IList<Purchase> purchases)
