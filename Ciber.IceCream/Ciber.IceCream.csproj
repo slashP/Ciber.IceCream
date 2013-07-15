@@ -213,6 +213,7 @@
     <Compile Include="Badges\MorningGloryBadge.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BadgeController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
     <Compile Include="Controllers\FillFreezerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -250,6 +251,7 @@
     <Content Include="Content\js\Domain\IceCream.js" />
     <Content Include="Content\js\FillFreezer\AdminIceCreamVM.js" />
     <Content Include="Content\js\FillFreezer\NewBrandVM.js" />
+    <Content Include="Content\js\Home\BadgesVM.js" />
     <Content Include="Content\js\Home\BuyIceCreamVM.js" />
     <Content Include="Content\js\libs\components\when\.gitignore" />
     <Content Include="Content\js\libs\components\when\apply.js" />

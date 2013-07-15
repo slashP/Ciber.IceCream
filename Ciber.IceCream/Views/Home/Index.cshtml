@@ -3,8 +3,15 @@
 }
 
 <header>
-    <h1>Ciber is!</h1>
+    <div data-viewmodel="Home/BadgesVM">
+        <h1>Ciber is!
+            <span data-bind="foreach: badges">
+                <img src="http://www.freestockphotos.biz/pictures/15/15160/Illustration+of+a+gold+star.png" data-bind="attr: {title: badge}" class="badge" alt="badge star"/>
+            </span>
+        </h1>
+    </div>
 </header>
+
 <div data-viewmodel="Home/IceCreamListVM">
     <ul class="is-list" data-bind="foreach: iceCreams">
         <li data-bind="click: $parent.showBuyPopup" class="ice-cream">
