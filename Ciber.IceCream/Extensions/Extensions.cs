@@ -18,5 +18,15 @@ namespace CiberIs.Extensions
             var i = 0;
             foreach (var e in ie) action(e, i++);
         }
+
+        public static int ToInt(this double number)
+        {
+            return (int)Math.Round(number, 0);
+        }
+
+        public static int SafeValue(this int? number)
+        {
+            return number.HasValue ? number.Value : 0;
+        }
     }
 }
