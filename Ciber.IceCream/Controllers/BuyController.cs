@@ -4,6 +4,7 @@ using System.Net.Http.Formatting;
 using System.Web.Http;
 using CiberIs.Models;
 using MongoDB.Driver;
+using CiberIs.Extensions;
 
 namespace CiberIs.Controllers
 {
@@ -26,7 +27,7 @@ namespace CiberIs.Controllers
                 ice.Quantity--;
                 if(ice.Quantity < 0) throw new HttpResponseException(HttpStatusCode.Conflict);
                 _mongoDb.Save(ice, "IceCreams");
-                _mongoDb.Insert(new Purchase() { Price = ice.Price, Buyer = int.Parse(data.Get("buyer")), Time = DateTime.UtcNow, IceCreamId = iceCreamId}, "Purchases");
+                _mongoDb.Insert(new Purchase() { Price = ice.Price.ToInt(), Buyer = int.Parse(data.Get("buyer")), Time = DateTime.UtcNow, IceCreamId = iceCreamId}, "Purchases");
             }
             catch (MongoException e)
             {

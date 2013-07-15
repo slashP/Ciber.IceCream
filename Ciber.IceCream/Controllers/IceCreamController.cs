@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Web.Http;
 using CiberIs.Models;
 using MongoDB.Driver;
 using System.Linq;
+using CiberIs.Extensions;
 
 namespace CiberIs.Controllers
 {
@@ -24,7 +24,7 @@ namespace CiberIs.Controllers
                 _mongoDb.GetCollection<IceCream>("IceCreams").Where(x => x.Quantity > 0).Select(x => new
             {
                 x.Title,
-                x.Price,
+                Price = x.Price.ToInt(),
                 Id = x.Id.ToString(),
                 x.Image,
                 x.Quantity
@@ -37,7 +37,7 @@ namespace CiberIs.Controllers
                        ? _mongoDb.GetCollection<IceCream>("IceCreams").AsQueryable().Select(x => new
                            {
                                x.Title,
-                               x.Price,
+                               Price = x.Price.ToInt(),
                                Id = x.Id.ToString(),
                                x.Image,
                                x.Quantity
@@ -69,29 +69,26 @@ namespace CiberIs.Controllers
             if (iceCream == null) return new { success = false, errorMessage = "No ice cream with that id" };
             try
             {
-                var newPrice = GetPriceBasedOnQuantity(iceCream, price, quantity);
+                var newPrice = GetPriceBasedOnQuantityAndLoss(iceCream, price, quantity);
                 iceCream.Quantity += quantity;
                 iceCream.Price = newPrice;
+                iceCream.Loss = 0;
                 _mongoDb.Save(iceCream, "IceCreams");
             }
             catch (MongoException e)
             {
                 return new { success = false, errorMessage = e.Message };
             }
-            return new { success = true, errorMessage = string.Empty, quantity = iceCream.Quantity, price = iceCream.Price};
+            return new { success = true, errorMessage = string.Empty, quantity = iceCream.Quantity, price = iceCream.Price.ToInt()};
         }
 
-        private static int GetPriceBasedOnQuantity(IceCream iceCream, int price, int quantity)
+        private static double GetPriceBasedOnQuantityAndLoss(IceCream iceCream, int price, int quantity)
         {
-            if (iceCream.Quantity == 0 || iceCream.Price == 0)
-            {
-                return price;
-            }
             var totalQuantity = quantity + iceCream.Quantity;
-            var fraction1 = (decimal) (quantity)*price;
-            var fraction2 = (decimal) (iceCream.Quantity)*iceCream.Price;
-            var fraction3 = (fraction1 + fraction2)/totalQuantity;
-            return (int)Math.Round(fraction3, 0);
+            var fraction1 = (double) (quantity)*price;
+            var fraction2 = (iceCream.Quantity)*iceCream.Price;
+            var fraction3 = (fraction1 + fraction2 + iceCream.Loss.SafeValue()*iceCream.Price)/totalQuantity;
+            return fraction3;
         }
     }
 }

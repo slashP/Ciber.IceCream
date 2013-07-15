@@ -1,0 +1,13 @@
+﻿@model List<CiberIs.Models.IceCream>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header><h1>Register losses</h1></header>
+
+@foreach(var ice in Model) {
+    <span>@ice.Title</span>
+    @Html.ActionLink("Loss", "RegisterForIce", new { id=ice.Id.ToString() })
+    <br />
+}
