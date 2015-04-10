@@ -19,30 +19,16 @@ namespace CiberIs.Controllers
 
         public IEnumerable<dynamic> GetIceCreams()
         {
-            return User.IsInRole("admin") ? 
-                GetIceCreams(true) :
-                _mongoDb.GetCollection<IceCream>("IceCreams").Where(x => x.Quantity > 0).Select(x => new
-            {
-                x.Title,
-                Price = x.Price.ToInt(),
-                Id = x.Id.ToString(),
-                x.Image,
-                x.Quantity
-            }).ToList();
+            return User.IsInRole("admin") ? GetIceCreams(true) : GetIceCreams(false);
         }
 
         public IEnumerable<dynamic> GetIceCreams(bool includeAll)
         {
-            return includeAll
-                       ? _mongoDb.GetCollection<IceCream>("IceCreams").AsQueryable().Select(x => new
-                           {
-                               x.Title,
-                               Price = x.Price.ToInt(),
-                               Id = x.Id.ToString(),
-                               x.Image,
-                               x.Quantity
-                           }).ToList()
-                       : GetIceCreams();
+            return
+                _mongoDb.GetCollection<IceCream>("IceCreams")
+                    .Select(x => new { x.Title, Price = x.Price.ToInt(), Id = x.Id.ToString(), x.Image, x.Quantity })
+                    .ToList()
+                    .Where(x => x.Quantity > 0 || includeAll);
         }
 
         [Authorize(Roles = "admin")]
