@@ -8,6 +8,8 @@ using CiberIs.Extensions;
 
 namespace CiberIs.Controllers
 {
+    using System.Linq;
+
     public class BuyController : ApiController
     {
         private readonly IMongoDb _mongoDb;
@@ -27,7 +29,19 @@ namespace CiberIs.Controllers
                 ice.Quantity--;
                 if(ice.Quantity < 0) throw new HttpResponseException(HttpStatusCode.Conflict);
                 _mongoDb.Save(ice, "IceCreams");
-                _mongoDb.Insert(new Purchase() { Price = ice.Price.ToInt(), Buyer = int.Parse(data.Get("buyer")), Time = DateTime.UtcNow, IceCreamId = iceCreamId}, "Purchases");
+                int buyerId;
+                if (!int.TryParse(data.Get("buyer"), out buyerId))
+                {
+                    var user =
+                        _mongoDb.GetCollection<SlackUser>("SlackUsers").FirstOrDefault(x => x.SlackUserId == data.Get("slackId"));
+                    if (user == null)
+                    {
+                        throw new HttpResponseException(HttpStatusCode.ExpectationFailed);
+                    }
+
+                    buyerId = user.EmployeeId;
+                }
+                _mongoDb.Insert(new Purchase() { Price = ice.Price.ToInt(), Buyer = buyerId, Time = DateTime.UtcNow, IceCreamId = iceCreamId}, "Purchases");
             }
             catch (MongoException e)
             {
