@@ -219,6 +219,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IceCreamController.cs" />
     <Compile Include="Controllers\LossController.cs" />
+    <Compile Include="Controllers\RegisterSlackUserController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
     <Compile Include="Extensions\Extensions.cs" />
@@ -233,6 +234,7 @@
     <Compile Include="Models\MongoDb.cs" />
     <Compile Include="Models\MongoHqConfig.cs" />
     <Compile Include="Models\Purchase.cs" />
+    <Compile Include="Models\SlackUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
