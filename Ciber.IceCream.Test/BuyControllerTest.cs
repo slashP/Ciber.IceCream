@@ -11,6 +11,8 @@ using NUnit.Framework;
 
 namespace Ciber.IceCream.Test
 {
+    using CiberIs.Badges;
+
     [TestFixture]
     public class BuyControllerTest
     {
@@ -21,7 +23,7 @@ namespace Ciber.IceCream.Test
         public void Init()
         {
             _mongoDb = A.Fake<IMongoDb>();
-            _controller = new BuyController(_mongoDb);
+            _controller = new BuyController(_mongoDb, A.Fake<IBadgeService>());
         }
 
         [Test]
