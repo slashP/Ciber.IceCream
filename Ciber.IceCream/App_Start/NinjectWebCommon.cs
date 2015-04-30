@@ -8,7 +8,7 @@ namespace CiberIs.App_Start
 {
     using System;
     using System.Web;
-
+    using CiberIs.Badges;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
@@ -46,6 +46,7 @@ namespace CiberIs.App_Start
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
             kernel.Bind<IMongoDb>().To<MongoDb>();
+            kernel.Bind<IBadgeService>().To<BadgeService>();
             RegisterServices(kernel);
             GlobalConfiguration.Configuration.DependencyResolver = new Ninject.WebApi.DependencyResolver.NinjectDependencyResolver(kernel);
 

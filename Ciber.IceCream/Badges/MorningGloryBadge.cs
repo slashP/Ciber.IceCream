@@ -1,29 +1,17 @@
-﻿using System;
-using System.Linq;
-using CiberIs.Models;
-
-namespace CiberIs.Badges
+﻿namespace CiberIs.Badges
 {
-    public class MorningGloryBadge : BadgeJob
+    using System.Collections.Generic;
+    using System.Linq;
+    using CiberIs.Models;
+
+    public class MorningGloryBadge : IGrantBadges
     {
-        private readonly IMongoDb _mongoDb;
-        private const string BadgeName = "Morning glory - is før kl 9";
+        public const string BadgeName = "Morning glory - is før kl 9";
 
-        public MorningGloryBadge(IMongoDb mongoDb)
+        public bool HasBadge(IEnumerable<Purchase> purchases)
         {
-            _mongoDb = mongoDb;
-        }
-
-        protected override void AwardBadges()
-        {
-            var badges = _mongoDb.GetCollection<Badge>(CollectionName).ToList();
-            var purchases = _mongoDb.GetCollection<Purchase>("Purchases").ToList().Where(x => x.Time != null && x.Time.Value.Hour < 9).GroupBy(x => x.Buyer).Select(x => x.First().Buyer).ToList();
-            BadgeRepository.AddBadges(purchases, badges, _mongoDb, BadgeName);
-        }
-
-        protected override TimeSpan Interval
-        {
-            get { return DefaultTimeSpan; }
+            var hasBadge = purchases.Any(x => x.Time != null && x.Time.Value.Hour < 9);
+            return hasBadge;
         }
     }
 }
