@@ -10,7 +10,7 @@
 
         public bool HasBadge(IEnumerable<Purchase> purchases)
         {
-            return purchases.Count() >= 100;
+            return purchases.Count() >= 50;
         }
     }
 }
