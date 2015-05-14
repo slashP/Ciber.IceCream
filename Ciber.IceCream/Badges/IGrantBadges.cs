@@ -3,8 +3,9 @@
     using System.Collections.Generic;
     using CiberIs.Models;
 
-    internal interface IGrantBadges
+    public interface IGrantBadges
     {
+        string BadgeName { get; }
         bool HasBadge(IEnumerable<Purchase> purchases);
     }
 }

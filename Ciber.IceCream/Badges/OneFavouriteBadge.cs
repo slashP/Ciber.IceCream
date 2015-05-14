@@ -7,7 +7,7 @@
 
     public class OneFavouriteBadge : IGrantBadges
     {
-        public const string BadgeName = "Trofast - samme is fem ganger på rad";
+        public string BadgeName { get { return "Trofast - samme is fem ganger på rad"; } }
 
         public bool HasBadge(IEnumerable<Purchase> purchases)
         {
