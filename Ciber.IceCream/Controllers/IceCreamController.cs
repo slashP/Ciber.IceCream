@@ -27,7 +27,7 @@ namespace CiberIs.Controllers
             return
                 _mongoDb.GetCollection<IceCream>("IceCreams")
                     .ToList()
-                    .Select(x => new { x.Title, Price = x.Price.ToInt(), Id = x.Id.ToString(), x.Image, x.Quantity })
+                    .Select(x => new { x.Title, Price = x.Price.ToInt(), Id = x.Id.ToString(), x.Image, Quantity = x.Quantity.ToInt() })
                     .Where(x => x.Quantity > 0 || includeAll);
         }
 
@@ -55,7 +55,7 @@ namespace CiberIs.Controllers
             if (iceCream == null) return new { success = false, errorMessage = "No ice cream with that id" };
             try
             {
-                iceCream.Quantity += quantity;
+                iceCream.Quantity = (int)(iceCream.Quantity + quantity);
                 iceCream.Price = price;
                 _mongoDb.Save(iceCream, "IceCreams");
             }
@@ -63,7 +63,7 @@ namespace CiberIs.Controllers
             {
                 return new { success = false, errorMessage = e.Message };
             }
-            return new { success = true, errorMessage = string.Empty, quantity = iceCream.Quantity, price = iceCream.Price.ToInt()};
+            return new { success = true, errorMessage = string.Empty, quantity = iceCream.Quantity.ToInt(), price = iceCream.Price.ToInt()};
         }
     }
 }

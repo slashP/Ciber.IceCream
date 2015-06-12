@@ -10,9 +10,9 @@ namespace CiberIs.Models
         public BsonObjectId Id { get; set; }
         public double Price { get; set; }
         public string Title { get; set; }
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
         public string Image { get; set; }
         [Obsolete("Removed loss functionality. Here for backwards compatibility")]
-        public int? Loss { get; set; }
+        public double? Loss { get; set; }
     }
 }
