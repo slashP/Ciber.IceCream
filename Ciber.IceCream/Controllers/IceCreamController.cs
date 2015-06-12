@@ -26,8 +26,8 @@ namespace CiberIs.Controllers
         {
             return
                 _mongoDb.GetCollection<IceCream>("IceCreams")
-                    .Select(x => new { x.Title, Price = x.Price.ToInt(), Id = x.Id.ToString(), x.Image, x.Quantity })
                     .ToList()
+                    .Select(x => new { x.Title, Price = x.Price.ToInt(), Id = x.Id.ToString(), x.Image, x.Quantity })
                     .Where(x => x.Quantity > 0 || includeAll);
         }
 
