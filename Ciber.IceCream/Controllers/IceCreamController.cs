@@ -55,10 +55,8 @@ namespace CiberIs.Controllers
             if (iceCream == null) return new { success = false, errorMessage = "No ice cream with that id" };
             try
             {
-                var newPrice = GetPriceBasedOnQuantityAndLoss(iceCream, price, quantity);
                 iceCream.Quantity += quantity;
-                iceCream.Price = newPrice;
-                iceCream.Loss = 0;
+                iceCream.Price = price;
                 _mongoDb.Save(iceCream, "IceCreams");
             }
             catch (MongoException e)
@@ -66,15 +64,6 @@ namespace CiberIs.Controllers
                 return new { success = false, errorMessage = e.Message };
             }
             return new { success = true, errorMessage = string.Empty, quantity = iceCream.Quantity, price = iceCream.Price.ToInt()};
-        }
-
-        private static double GetPriceBasedOnQuantityAndLoss(IceCream iceCream, int price, int quantity)
-        {
-            var totalQuantity = quantity + iceCream.Quantity;
-            var fraction1 = (double) (quantity)*price;
-            var fraction2 = (iceCream.Quantity)*iceCream.Price;
-            var fraction3 = (fraction1 + fraction2 + iceCream.Loss.SafeValue()*iceCream.Price)/totalQuantity;
-            return fraction3;
         }
     }
 }

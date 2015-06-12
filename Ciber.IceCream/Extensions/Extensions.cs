@@ -23,10 +23,5 @@ namespace CiberIs.Extensions
         {
             return (int)Math.Round(number, 0);
         }
-
-        public static int SafeValue(this int? number)
-        {
-            return number.HasValue ? number.Value : 0;
-        }
     }
 }

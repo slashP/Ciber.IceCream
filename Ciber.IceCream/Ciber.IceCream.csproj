@@ -218,10 +218,10 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BadgeController.cs" />
     <Compile Include="Controllers\BuyController.cs" />
+    <Compile Include="Controllers\FavouritesController.cs" />
     <Compile Include="Controllers\FillFreezerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IceCreamController.cs" />
-    <Compile Include="Controllers\LossController.cs" />
     <Compile Include="Controllers\RegisterSlackUserController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
@@ -406,12 +406,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Account\ChangeEmail.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Loss\Register.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Loss\RegisterForIce.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
