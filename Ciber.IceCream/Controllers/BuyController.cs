@@ -35,7 +35,7 @@
             IEnumerable<string> newBadges;
             try
             {
-                ice.Quantity--;
+                ice.Quantity = (int)ice.Quantity - 1;
                 if (ice.Quantity < 0)
                 {
                     throw new HttpResponseException(HttpStatusCode.Conflict);
@@ -80,7 +80,7 @@
             {
                 success = true, 
                 errorMessage = string.Empty, 
-                quantity = ice.Quantity,
+                quantity = ice.Quantity.ToInt(),
                 newBadges = newBadges
             };
         }
