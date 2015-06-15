@@ -6,7 +6,7 @@
 
     public class MorningGloryBadge : IGrantBadges
     {
-        public const string BadgeName = "Morning glory - is før kl 9";
+        public string BadgeName { get { return "Morning glory - is før kl 9"; } }
 
         public bool HasBadge(IEnumerable<Purchase> purchases)
         {

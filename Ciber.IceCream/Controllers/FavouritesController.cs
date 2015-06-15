@@ -1,6 +1,7 @@
 ﻿namespace CiberIs.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Web.Http;
     using CiberIs.Models;
@@ -14,7 +15,7 @@
             _mongoDb = mongoDb;
         }
 
-        public dynamic Get(string slackId)
+        public IEnumerable<Favourite> Get(string slackId)
         {
             var existingUser =
                 _mongoDb.GetCollection<SlackUser>("SlackUsers")
@@ -27,7 +28,7 @@
             var employeeId = existingUser.EmployeeId;
             var purchases =
                 _mongoDb.GetCollection<Purchase>("Purchases")
-                        .Where(x => x.Buyer == employeeId)
+                        .Where(x => x.Buyer == employeeId && x.IceCreamId != null)
                         .ToList();
 
             var iceCreams = _mongoDb.GetCollection<IceCream>("IceCreams").Select(
@@ -37,16 +38,23 @@
                     Id = x.Id.ToString()
                 }).ToDictionary(x => x.Id, x => x.Title);
             var favourites =
-                purchases.GroupBy(x => x.IceCreamId)
+                purchases.Where(x => iceCreams.ContainsKey(x.IceCreamId))
+                         .GroupBy(x => x.IceCreamId)
                          .OrderByDescending(x => x.Count())
-                         .Take(3)
                          .Select(
-                             x => new
+                             x => new Favourite
                              {
                                  Name = iceCreams[x.First().IceCreamId],
                                  Quantity = x.Count()
-                             });
+                             }).ToList();
             return favourites;
+        }
+
+        public class Favourite
+        {
+            public string Name { get; set; }
+
+            public int Quantity { get; set; }
         }
     }
 }

@@ -6,7 +6,7 @@
 
     public class SilverBadge : IGrantBadges
     {
-        public const string BadgeName = "Silver";
+        public string BadgeName { get { return "Silver"; } }
 
         public bool HasBadge(IEnumerable<Purchase> purchases)
         {

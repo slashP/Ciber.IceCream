@@ -8,7 +8,7 @@ namespace CiberIs.Badges
 {
     public class ConsistentBadge : IGrantBadges
     {
-        public const string BadgeName = "Is tre dager på rad";
+        public string BadgeName { get { return "Is tre dager på rad"; } }
 
         public bool HasBadge(IEnumerable<Purchase> purchases)
         {

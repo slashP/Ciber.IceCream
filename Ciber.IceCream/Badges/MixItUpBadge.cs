@@ -6,7 +6,7 @@
 
     public class MixItUpBadge : IGrantBadges
     {
-        public const string BadgeName = "Mix It Up - 10 forskjellige is";
+        public string BadgeName { get { return "Mix It Up - 10 forskjellige is"; } }
 
         public bool HasBadge(IEnumerable<Purchase> purchases)
         {

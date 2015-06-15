@@ -1,24 +1,21 @@
 ﻿namespace CiberIs.Badges
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
     using CiberIs.Models;
 
     public class BadgeService : IBadgeService
     {
         const string CollectionName = "Badges";
 
-        static readonly Dictionary<string, IGrantBadges> _grantBadges = new Dictionary
-            <string, IGrantBadges>
-        {
-            { ConsistentBadge.BadgeName, new ConsistentBadge() }, 
-            { GoldBadge.BadgeName, new GoldBadge() }, 
-            { SilverBadge.BadgeName, new SilverBadge() }, 
-            { BronzeBadge.BadgeName, new BronzeBadge() }, 
-            { MixItUpBadge.BadgeName, new MixItUpBadge() }, 
-            { MorningGloryBadge.BadgeName, new MorningGloryBadge() }, 
-            { OneFavouriteBadge.BadgeName, new OneFavouriteBadge() }
-        };
+        public static readonly Dictionary<string, IGrantBadges> AvailableBadges =
+            Assembly.GetExecutingAssembly()
+                    .GetTypes()
+                    .Where(p => typeof(IGrantBadges).IsAssignableFrom(p) && !p.IsInterface)
+                    .Select(x => (IGrantBadges)Activator.CreateInstance(x))
+                    .ToDictionary(x => x.BadgeName, x => x);
 
         readonly IMongoDb _mongoDb;
 
@@ -49,7 +46,7 @@
                         .Where(x => x.Buyer == employeeId)
                         .ToList();
             foreach (var badgeToGrant in
-                _grantBadges.Where(x => badgesForUser.Contains(x.Key) == false)
+                AvailableBadges.Where(x => badgesForUser.Contains(x.Key) == false)
                             .Where(badgeToGrant => badgeToGrant.Value.HasBadge(purchases)))
             {
                 badge.BadgesForUser.Add(badgeToGrant.Key);
